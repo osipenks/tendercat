@@ -1,0 +1,87 @@
+<odoo>
+  <data>
+        <!-- File chunk -->
+        <record id="edit_file_chunk" model="ir.ui.view">
+            <field name="name">tender_cat.file_chunk.form</field>
+            <field name="model">tender_cat.file_chunk</field>
+            <field name="arch" type="xml">
+                <form string="File chunk">
+                    <header>
+                    </header>
+                <sheet string="Text">
+                    <div class="file_chunk_text_frame">
+                    </div>
+                    <div class="file_chunk_text">
+                        <field name="chunk_text" />
+                    </div>
+                    <group>
+                        <field name="user_label_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_edit_color': False, 'no_create': True}"/>
+                        <field name="chunk_id" string="Text ID" />
+                        <field name="tender_file_id" string="File" />
+                        <field name="tender_id" string="Tender" />
+                        <field name="is_req_doc" string="Is document requirement" />
+                        <field name="is_qualification" string="Is view" />
+                    </group>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+      <!-- File chunk tree view -->
+      <record id="view_file_chunk_tree" model="ir.ui.view" >
+            <field name="name">tender_cat.file_chunk.tree</field>
+            <field name="model">tender_cat.file_chunk</field>
+            <field eval="1" name="priority"/>
+
+            <field name="arch" type="xml">
+                <!--
+                <tree string="Texts" create="true" edit="true" limit="255" class="o_text_list file_chunk_tree">
+                -->
+                <tree string="Texts" create="false" delete="false" edit="true" editable="bottom" limit="255" class="o_text_list file_chunk_tree">
+
+                    <field name="user_label_ids" optional="show" widget="many2many_tags" options="{'color_field': 'color', 'no_create': True, 'no_create_edit': True}"/>
+                    <field name="chunk_text" optional="show" readonly="1"/>
+                    <field name="chunk_id" string="ID"  optional="show" readonly="1"/>
+                    <field name="tender_id" string="Tender" optional="hide" readonly="1"/>
+                    <field name="tender_file_id" string="File"  optional="hide" readonly="1"/>
+                    <field name="req_doc_score" optional="hide" readonly="1" />
+                    <field name="is_req_doc" optional="hide" readonly="1" />
+
+                    <field name="is_doc_context" optional="hide" readonly="1" />
+                </tree>
+            </field>
+      </record>
+
+      <!-- File chunk search -->
+      <record id="view_file_chunk_search" model="ir.ui.view">
+            <field name="name">tender_cat.file_chunk.search</field>
+            <field name="model">tender_cat.file_chunk</field>
+
+            <field name="arch" type="xml">
+                <search string="Texts">
+                    <field name="chunk_text" string="Text"/>
+                    <field name="chunk_id" string="ID"/>
+                    <field name="tender_file_id" string="File name"/>
+                    <field name="tender_id" string="Tender"/>
+
+                    <filter string="Documents" name="doc_list" domain="[('user_label_ids', '!=', False)]"/>
+                    <filter string="Documents context" name="doc_list_with_context" domain="[('is_doc_context', '=', True)]"/>
+
+                    <group expand="0" string="Group By">
+                        <filter string="File" name="file" context="{'group_by': 'tender_file_id'}"/>
+                        <filter string="Tender" name="tender" context="{'group_by': 'tender_id'}"/>
+                    </group>
+
+
+
+                </search>
+            </field>
+        </record>
+
+
+
+
+
+
+  </data>
+</odoo>

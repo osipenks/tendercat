@@ -1,0 +1,33 @@
+<odoo>
+  <data>
+
+      <!-- Label from view -->
+      <record id="view_file_label_form" model="ir.ui.view" >
+            <field name="name">tender_cat.label.form</field>
+            <field name="model">tender_cat.label</field>
+            <field name="arch" type="xml">
+                <form string="Label">
+                    <group>
+                        <field name="name" string="Name"/>
+                        <field name="color" string="Color"/>
+                        <field name="id" string="ID"/>
+                    </group>
+                </form>
+            </field>
+      </record>
+
+      <!-- Label tree view -->
+      <record id="view_file_label_tree" model="ir.ui.view" >
+            <field name="name">tender_cat.label.tree</field>
+            <field name="model">tender_cat.label</field>
+            <field name="arch" type="xml">
+                <tree string="Labels">
+                    <field name="name" optional="show" />
+                    <field name="color" optional="show" />
+                    <field name="id" optional="show" />
+                </tree>
+            </field>
+      </record>
+
+  </data>
+</odoo>

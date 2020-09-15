@@ -1,0 +1,68 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="tender_cat.list">
+      <field name="name">tender_cat list</field>
+      <field name="model">tender_cat.tender_cat</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="tender_cat_tender_action">
+      <field name="name">Tenders</field>
+      <field name="res_model">tender_cat.tender</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="tender_cat_file_texts_action">
+      <field name="name">File texts</field>
+      <field name="res_model">tender_cat.file_chunk</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="tender_cat_labels_action">
+      <field name="name">Labels</field>
+      <field name="res_model">tender_cat.label</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_tender_cat_settings_general" model="ir.actions.act_window">
+        <field name="name">General settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'tender_cat'}</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Tender.cat" id="tender_cat_menu_root" web_icon="tender_cat,static/description/icon.png"/>
+
+    <!-- menu categories -->
+    <menuitem name="Tenders" id="tender_cat_menu_tenders" parent="tender_cat_menu_root"/>
+    <menuitem name="Configuration" id="tender_cat_menu_config" parent="tender_cat_menu_root"/>
+
+    <!-- Menu Tenders -->
+    <menuitem name="Tender list" id="tender_cat_menu_tender_list" parent="tender_cat_menu_tenders"
+              action="tender_cat_tender_action"/>
+    <menuitem name="Texts" id="tender_cat_menu_file_texts" parent="tender_cat_menu_tenders"
+              action="tender_cat_file_texts_action"/>
+
+    <!-- Menu Config -->
+    <menuitem name="Labels" id="tender_cat_menu_labels" parent="tender_cat_menu_config"
+              action="tender_cat_labels_action"/>
+
+    <menuitem name="General settings" id="menu_tender_cat_settings_general" parent="tender_cat_menu_config"
+              action="action_tender_cat_settings_general" sequence="1000"/>
+
+  </data>
+</odoo>

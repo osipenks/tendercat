@@ -1,0 +1,103 @@
+<odoo>
+  <data>
+        <!-- Tender -->
+        <record id="edit_tender" model="ir.ui.view">
+            <field name="name">tender_cat.tender.form</field>
+            <field name="model">tender_cat.tender</field>
+            <field name="arch" type="xml">
+                <form string="Tender">
+                    <header>
+                        <button name="reload_tender_data" string="Reload from Prozorro" type="object" class="oe_read_only"/>
+                        <button name="make_assessment" string="Assessment" type="object" class="oe_read_only"/>
+                    </header>
+                <sheet string="Tender">
+                    <div class="oe_button_box" name="button_box" groups="base.group_user">
+                        <button  class="oe_stat_button" name="texts_tree_view" type="object" icon="fa-file-text-o">
+                            <field string="Documents list" name="doc_count" widget="statinfo"/>
+                        </button>
+                        <!--
+                        <button class="oe_stat_button" name="qualification_documents" type="object" icon="fa-tasks">
+                            <field string="Qualifications" name="req_count" widget="statinfo"/>
+                        </button>
+                        -->
+                        <button class="oe_stat_button" name="file_tree_view" type="object" icon="fa-database">
+                            <field string="Files" name="file_count" widget="statinfo"/>
+                        </button>
+                    </div>
+
+                    <field name="tender_id" string="Tender ID" placeholder="Enter tender identifier..."/>
+
+                    <h3>
+                        <field name="full_name" placeholder="Name" style="white-space: normal;"/>
+                    </h3>
+                    <field name="description" string="Description" placeholder="Description"/>
+                    <group>
+                        <group>
+                            <field name="auction_url" string="Link" widget ="url"/>
+                            <field name="procuring_entity" string="Buyer"/>
+                        </group>
+                        <group>
+                            <label for="value" />
+                            <h3>
+                            <field name="value" label = "Total budget" class="oe_subtotal_footer_separator" widget='monetary' />
+                            </h3>
+                            <field name="tender_period_start" />
+                            <field name="tender_period_end" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" help="Follow this tender to automatically track the events associated to it" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>
+
+      <!-- Tender tree view -->
+      <record id="view_tender_tree" model="ir.ui.view" >
+            <field name="name">tender_cat.tender.tree</field>
+            <field name="model">tender_cat.tender</field>
+            <field eval="1" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Tenders" >
+                    <field name="date_created" optional="hide" />
+                    <field name="tender_id" optional="show"/>
+                    <field name="full_name"  string="Name"/>
+                    <field name="value" optional="show"/>
+                    <field name="tender_period_start" optional="show"/>
+                    <field name="tender_period_end" optional="show"/>
+                    <field name="user_id" invisible="context.get('user_invisible', False)" optional="show"/>
+                    <field name="doc_count" optional="hide"/>
+                    <field name="file_count" optional="hide"/>
+                </tree>
+            </field>
+      </record>
+
+      <!-- Tender search view -->
+      <record id="view_tender_search" model="ir.ui.view">
+            <field name="name">tender_cat.tender.search</field>
+            <field name="model">tender_cat.tender</field>
+            <field name="arch" type="xml">
+                <search string="Tenders">
+                    <field name="name" string="Name"/>
+                    <field name="description" string="Description"/>
+                    <field name="tender_id" string="Tender ID"/>
+                    <field name="value" string="Value"/>
+                    <field name="procuring_entity" string="Buyer"/>
+                </search>
+            </field>
+      </record>
+
+
+      <record id="act_tender_texts" model="ir.actions.act_window">
+            <field name="name">Texts</field>
+            <field name="res_model">tender_cat.file_chunk</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+
+
+  </data>
+</odoo>

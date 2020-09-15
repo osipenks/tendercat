@@ -1,0 +1,45 @@
+.o_attachment {
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+        width: 100%;
+    }
+    @include media-breakpoint-up(lg) {
+        width: 100%;
+    }
+}
+
+.o_kanban_view .o_kanban_record.o_kanban_attachment {
+ padding: 0; width: 31%;
+}
+
+.o_control_panel > div:first-of-type {
+  display: block;
+}
+
+.o_control_panel .o_cp_searchview {
+    width: 100%;
+    min-height: auto;
+}
+
+.file_chunk_text {
+    font-size: 1.5em;
+    padding: 15px;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    background: whitesmoke;
+}
+
+.file_chunk_text_frame {
+    padding-left: 15px;
+    color: gray;
+}
+
+.file_chunk_tree th[data-name="user_label_ids"]{
+    width: 20%;
+}
+
+.o_field_widget.o_field_many2manytags .badge .o_badge_text {
+    max-width: none;
+}
+

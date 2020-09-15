@@ -1,0 +1,9 @@
+<odoo>
+    <data>
+         <template id="tender_cat_css" name="tender_cat.css" inherit_id="web.assets_backend">
+         <xpath expr="." position="inside">
+             <link href="/tender_cat/static/src/css/tender_cat.css" rel="stylesheet" type="text/css"/>
+         </xpath>
+        </template>
+    </data>
+</odoo>
