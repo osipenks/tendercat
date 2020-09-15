@@ -9,8 +9,6 @@ _pycache__/
 *.py[cod]
 *$py.class
 
-/libcat/mytextpipe/.git
-/libcat/mytextpipe/.gitignore
 /script
 /venv
 /prozorro
