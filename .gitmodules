@@ -1,0 +1,3 @@
+[submodule "libcat/mytextpipe"]
+	path = libcat/mytextpipe
+	url = https://github.com/osipenks/mytextpipe.git
