@@ -1,6 +1,5 @@
 .*
 !.gitignore
-__init__.py
 
 *.csv
 todo
@@ -17,7 +16,6 @@ _pycache__/
 /data
 /bkp
 /Uk_Stemmer
-/notebooks
 
 *.csv
 todo
