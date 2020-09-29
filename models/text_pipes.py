@@ -182,6 +182,25 @@ def prozorro_file_to_html_postpoces(args_dict):
     new_html = new_html.replace(';;', '; ')
     new_html = new_html.replace(',;', ', ')
 
+    # Pozorro special cases
+
+    # Some artifacts, like 'до ст.  16 Закону України...'
+    new_html = re.sub(r'(\s+)п. +(\d+)', r'\1п.\2', new_html)
+    new_html = re.sub(r'(\s+)ч. +(\d+)', r'\1ч.\2', new_html)
+    new_html = re.sub(r'(\s+)ст. +(\d+)', r'\1ст.\2', new_html)
+
+    # multiply ;;;; between alphanumerics
+    new_html = re.sub(r'(\w+|\d+);+(\w+|\d+)', r'\1 \2', new_html)
+
+    # буд.ХХ
+    new_html = re.sub(r'\s{0,}буд[.{1}]\s{0,}', r'буд. ', new_html)
+    # т.ч.ПДВ
+    new_html = re.sub(r"\s{1,}т.ч.\s{0,}", r' т.ч. ', new_html)
+
+    # links
+    new_html = re.sub(r'https?://\S+|www\.\S+', r'', new_html)
+    new_html = re.sub(r'http?://\S+|www\.\S+', r'', new_html)
+
     try:
         if os.path.isfile(src_file_name):
             with open(src_file_name, 'w') as f:
