@@ -202,7 +202,7 @@ def prozorro_file_to_html_postpoces(args_dict):
     new_html = re.sub(r'http?://\S+|www\.\S+', r'', new_html)
 
     # вул.  Yyyy, 113, м. Хххх, Донецька
-    new_html = re.sub(r'(\s+|^\s*|[(])вул. +(\w+)', r'\1вул.\2', new_html)
+    new_html = re.sub(r'(\s+|^\s*|[(])[в|В]ул. +(\w+)', r'\1вул.\2', new_html)
     new_html = re.sub(r'(\s+|^\s*|[(])м. +(\w+)', r'\1м.\2', new_html)
     new_html = re.sub(r'(\s+|^\s*|[(])с. +(\w+)', r'\1с.\2', new_html)
 
