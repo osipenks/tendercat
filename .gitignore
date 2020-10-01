@@ -1,8 +1,9 @@
 .*
 !.gitignore
-!/security/*.csv
+
 
 *.csv
+!/security/*.csv
 todo
 todo_tender_cat
 
