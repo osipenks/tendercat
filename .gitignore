@@ -1,5 +1,6 @@
 .*
 !.gitignore
+!/security/*.csv
 
 *.csv
 todo
@@ -12,12 +13,6 @@ _pycache__/
 /.run
 /script
 /venv
-/prozorro
 /data
 /bkp
-/Uk_Stemmer
-
-!/security/*.csv
-*.csv
-todo
 
