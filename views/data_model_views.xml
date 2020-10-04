@@ -22,6 +22,12 @@
 			<field name="model">tender_cat.data.model</field>
 			<field name="arch" type="xml">
 				<form string="Data model">
+					<header>
+                        <button name="refit_model" string="Refit model" type="object" class="oe_read_only"/>
+                        <button name="action_make_data_dump" id="tender_cat_data_model_make_data_dump_btn"
+								type="object" class="oe_read_only"
+								string="Dump data" />
+                    </header>
 					<sheet>
 						<div class="oe_title">
 							<label for="name" class="oe_edit_only"/>
@@ -46,11 +52,6 @@
 
 
                             </field>
-
-								<!--
-								<field name="label_ids" widget="many2many_tags"
-									   options="{'color_field': 'color', 'no_create_edit': True}"/>
-								-->
 								</group>
 
 							</page>

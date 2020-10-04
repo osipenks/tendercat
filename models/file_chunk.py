@@ -38,7 +38,6 @@ class FileChunk(models.Model):
             tender.mark_contexts(self._origin.id)
 
     def write(self, vals):
-
         # If user changes label, register chunk for dumping
         user_label_ids = vals.get('user_label_ids', 0)
         if user_label_ids:
@@ -60,30 +59,7 @@ class FileChunk(models.Model):
         res = super(FileChunk, self).write(vals) if vals else True
         return res
 
-
-class MakeDumpFileChunk(models.TransientModel):
-    """
-        Dump file chunks for data models
-    """
-    _name = 'tender_cat.make.dump.file.chunk'
-    _description = 'Dump file chunks for data model'
-
-    data_model_id = fields.Many2one('tender_cat.data.model', string='Data model')
-    user_id = fields.Many2one('res.users', 'User', index=True)
-
-    @api.model
-    def default_get(self, default_fields):
-        result = super(MakeDumpFileChunk, self).default_get(default_fields)
-        if 'data_model_id' in default_fields:
-            found_ids = self.env['tender_cat.data.model'].search([('use_data_dumping', '=', 1)])
-            if found_ids:
-                result['data_model_id'] = found_ids[0].id
-
-        return result
-
-    def action_make_dump(self):
-        self.ensure_one()
-        record_ids = self._context.get('active_ids')
-        if record_ids:
-            dump = data_dump.DataDump(self.env, self.data_model_id.id)
-            dump.make_dump('file_chunk', record_ids)
+    def action_make_data_dump(self):
+        return self.env['tender_cat.data.dump.wizard'] \
+            .with_context(active_ids=self.ids, active_model='tender_cat.file_chunk', active_id=self.id) \
+            .action_make_data_dump()

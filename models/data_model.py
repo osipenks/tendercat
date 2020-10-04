@@ -34,11 +34,16 @@ class DataModel(models.Model):
     def tune(self):
         pass
 
-    def refit(self):
+    def refit_model(self):
         pass
 
     def transform_data(self):
         pass
+
+    def action_make_data_dump(self):
+        return self.env['tender_cat.data.dump.wizard'] \
+            .with_context(active_ids=self.ids, active_model='tender_cat.data.model', active_id=self.id) \
+            .action_make_data_dump()
 
     def dump_data(self, folder, data_type=None, ids=None):
         if data_type == 'file_chunk':

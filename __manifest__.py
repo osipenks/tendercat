@@ -27,7 +27,7 @@
         'views/config_settings.xml',
         'views/data_change_register_views.xml',
         'views/templates.xml',
-        'wizard/make_dump_file_chunk_views.xml',
+        'wizard/data_dump_wizard_views.xml',
     ],
 
     'css': ['static/src/css/tender_cat.css'],

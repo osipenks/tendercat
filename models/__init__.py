@@ -7,3 +7,4 @@ from . import config_settings
 from . import data_label
 from . import data_model
 from . import data_dump
+from . import data_dump_wizard
