@@ -1,0 +1,72 @@
+<odoo>
+	<data>
+		<!-- actions opening views on models -->
+		<record model="ir.actions.act_window" id="tender_cat_tender_action">
+			<field name="name">Tenders</field>
+			<field name="res_model">tender_cat.tender</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="tender_cat_file_texts_action">
+			<field name="name">File texts</field>
+			<field name="res_model">tender_cat.file_chunk</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="tender_cat_labels_action">
+			<field name="name">Labels</field>
+			<field name="res_model">tender_cat.label</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="tender_cat_data_models_action">
+			<field name="name">Data models</field>
+			<field name="res_model">tender_cat.data.model</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="tender_cat_change_register_action">
+			<field name="name">Change registration</field>
+			<field name="res_model">tender_cat.change.register</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record id="action_tender_cat_settings_general" model="ir.actions.act_window">
+			<field name="name">General settings</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">res.config.settings</field>
+			<field name="view_mode">form</field>
+			<field name="target">inline</field>
+			<field name="context">{'module' : 'tender_cat'}</field>
+		</record>
+
+		<!-- Top menu item -->
+		<menuitem name="Tender.cat" id="tender_cat_menu_root" web_icon="tender_cat,static/description/icon.png"/>
+
+		<!-- Top categories -->
+		<menuitem name="Tenders" id="tender_cat_menu_tenders" parent="tender_cat_menu_root"/>
+		<menuitem name="Configuration" id="tender_cat_menu_config" parent="tender_cat_menu_root"/>
+
+		<!-- Menu Tenders -->
+		<menuitem name="Tender list" id="tender_cat_menu_tender_list" parent="tender_cat_menu_tenders"
+				  action="tender_cat_tender_action"/>
+		<menuitem name="Texts" id="tender_cat_menu_file_texts" parent="tender_cat_menu_tenders"
+				  action="tender_cat_file_texts_action"/>
+
+		<!-- Menu Config -->
+		<menuitem name="Labels" id="tender_cat_menu_labels" parent="tender_cat_menu_config" sequence="10"
+				  action="tender_cat_labels_action"/>
+
+		<menuitem name="General settings" id="menu_tender_cat_settings_general" parent="tender_cat_menu_config"
+				  action="action_tender_cat_settings_general" sequence="100"/>
+
+		<menuitem id="tender_cat_menu_data_sub_menu" name="Data analysis" parent="tender_cat_menu_config" sequence="200"/>
+
+		<menuitem name="Data models" id="tender_cat_menu_data_models" parent="tender_cat_menu_data_sub_menu"
+				  action="tender_cat_data_models_action" sequence="300"/>
+
+		<menuitem name="Data change registration" id="tender_cat_menu_change_register" parent="tender_cat_menu_data_sub_menu"
+				  action="tender_cat_change_register_action" sequence="400"/>
+
+	</data>
+</odoo>

@@ -1,0 +1,71 @@
+<odoo>
+	<data>
+
+		<!-- Data model tree view -->
+		<record id="view_file_data_model_tree" model="ir.ui.view">
+			<field name="name">tender_cat.data.model.tree</field>
+			<field name="model">tender_cat.data.model</field>
+			<field name="arch" type="xml">
+				<tree string="Data models">
+					<field name="name" string="Name"/>
+					<field name="description" string="Description" optional="show"/>
+					<field name="id" string="ID" optional="show"/>
+					<field name="use_data_dumping" string="Use dump" optional="hide"/>
+					<field name="dump_number" string="Dump Nr." optional="show"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- Data model form view -->
+		<record id="view_file_data_model_form" model="ir.ui.view">
+			<field name="name">tender_cat.data.model.form</field>
+			<field name="model">tender_cat.data.model</field>
+			<field name="arch" type="xml">
+				<form string="Data model">
+					<sheet>
+						<div class="oe_title">
+							<label for="name" class="oe_edit_only"/>
+							<h1>
+								<field name="name" placeholder="Enter model name..."/>
+							</h1>
+						</div>
+						<group>
+							<field name="description" string="Description"/>
+						</group>
+
+						<notebook>
+							<page string="Labels" name="labels">
+								<group>
+
+								<field name="label_ids" string="Use labels" >
+
+                                <tree>
+                                    <field name="id" width="2"/>
+                                    <field name="name"/>
+                                </tree>
+
+
+                            </field>
+
+								<!--
+								<field name="label_ids" widget="many2many_tags"
+									   options="{'color_field': 'color', 'no_create_edit': True}"/>
+								-->
+								</group>
+
+							</page>
+							<page string="Data dumps" name="data_dumps">
+								<group>
+									<field name="use_data_dumping" string="Model use data dumping"/>
+									<field name="dump_number" string="Last dump number"/>
+								</group>
+							</page>
+							<page string="Parameters" name="parameters">
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

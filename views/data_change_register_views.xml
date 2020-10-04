@@ -1,0 +1,36 @@
+<odoo>
+	<data>
+		<!-- Change registration tree view -->
+		<record id="view_change_registration_tree" model="ir.ui.view">
+			<field name="name">tender_cat.change.register.tree</field>
+			<field name="model">tender_cat.change.register</field>
+			<field name="arch" type="xml">
+				<tree string="Data change registration">
+					<field name="label_id" optional="show"/>
+					<field name="chunk_id" optional="show"/>
+					<field name="file_id" optional="show"/>
+					<field name="tender_id" optional="show"/>
+					<field name="data_model_id" optional="show"/>
+					<field name="dump_number" optional="show"/>
+					<field name="user_id" optional="show"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- Change registration search -->
+		<record id="view_change_registration_search" model="ir.ui.view">
+			<field name="name">tender_cat.change.register.tree</field>
+			<field name="model">tender_cat.change.register</field>
+			<field name="arch" type="xml">
+				<search>
+					<group expand="0" string="Group By">
+						<filter string="File" name="file" context="{'group_by': 'file_id'}"/>
+						<filter string="Tender" name="tender" context="{'group_by': 'tender_id'}"/>
+						<filter string="Data model" name="data_model" context="{'group_by': 'data_model_id'}"/>
+						<filter string="User" name="user" context="{'group_by': 'user_id'}"/>
+					</group>
+				</search>
+			</field>
+		</record>
+	</data>
+</odoo>

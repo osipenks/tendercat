@@ -9,16 +9,15 @@ import json
 
 
 class TenderSource:
-    """A common base class for other tender sources"""
-
+    """A common base class for other te!nder sources"""
     def ids(self, count=None):
-        pass
+        raise NotImplementedError
 
     def tenders(self, ids=None):
-        pass
+        raise NotImplementedError
 
     def tender_url(self, tender_id):
-        pass
+        raise NotImplementedError
 
 
 class TenderSourceProzorroWeb(TenderSource):
@@ -27,6 +26,12 @@ class TenderSourceProzorroWeb(TenderSource):
 
     def __init__(self, data_path=None):
         self.data_path = data_path
+
+    def tenders(self, ids=None):
+        return []
+
+    def ids(self, count=None):
+        return []
 
     def tender_url(self, tender_id):
         return self.base_url+str(tender_id).strip()

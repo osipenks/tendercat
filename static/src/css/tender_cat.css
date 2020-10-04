@@ -1,20 +1,22 @@
 .o_attachment {
     width: 100%;
 
-    @include media-breakpoint-up(md) {
-        width: 100%;
-    }
-    @include media-breakpoint-up(lg) {
-        width: 100%;
-    }
+@include media-breakpoint-up(md) {
+    width: 100%;
+}
+
+@include media-breakpoint-up(lg) {
+    width: 100%;
+}
 }
 
 .o_kanban_view .o_kanban_record.o_kanban_attachment {
- padding: 0; width: 31%;
+    padding: 0;
+    width: 31%;
 }
 
 .o_control_panel > div:first-of-type {
-  display: block;
+    display: block;
 }
 
 .o_control_panel .o_cp_searchview {
@@ -35,7 +37,7 @@
     color: gray;
 }
 
-.file_chunk_tree th[data-name="user_label_ids"]{
+.file_chunk_tree th[data-name="user_label_ids"] {
     width: 20%;
 }
 

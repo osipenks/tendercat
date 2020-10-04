@@ -3,12 +3,12 @@
 from odoo import models, fields, api
 from urllib.parse import urlparse
 from . import tender_source
-from . import text_pipes
+from . import text_pipe
 from ..libcat.mytextpipe import mytextpipe
 import os
 import base64
 import logging
-from . import transformers
+from . import da_reqdoc_similarity
 import random
 import csv
 
@@ -39,7 +39,8 @@ class Tender(models.Model):
     tender_period_start = fields.Date(string='Begins', default=fields.Date.today())
     tender_period_end = fields.Date(string='Ends')
 
-    doc_count = fields.Integer(compute='_compute_req_documents_count', string="Number of required documents")
+    doc_count = fields.Integer(compute='_compute_req_documents_count',
+                               string="Number of required documents")
     req_count = fields.Integer()
     file_count = fields.Integer(compute='_compute_attached_file_count', string="Number of files attached")
 
@@ -107,17 +108,6 @@ class Tender(models.Model):
             'target': 'current',
             'context': {'search_default_tender_id': self.id, 'search_default_doc_list': True},
         }
-
-    def documents_list(self):
-        attachment_action = self.env.ref('base.action_attachment')
-        action = attachment_action.read()[0]
-        action['domain'] = str([
-            '&',
-            ('res_model', '=', 'tender_cat.tender'),
-            ('res_id', 'in', self.ids)
-        ])
-        action['context'] = "{'default_res_model': '%s','default_res_id': %d}" % (self._name, self.id)
-        return action
 
     def load_tender_files(self, tender_id=None):
         # Download tender data
@@ -271,9 +261,9 @@ class Tender(models.Model):
         response_csv_path = str(request_csv_path).replace('_request.', '_response.')
 
         # 2. Call transformer, giving him request and response paths
-        transformers.PROCESSING_FOLDER = self._get_processing_folder()  # ???
-        transformers.doc_type_similarity(request_csv=request_csv_path,
-                                         response_csv=response_csv_path)
+        da_reqdoc_similarity.PROCESSING_FOLDER = self._get_processing_folder()  # ???
+        da_reqdoc_similarity.doc_type_similarity(request_csv=request_csv_path,
+                                                 response_csv=response_csv_path)
 
         # 3. Process response csv file
         self._process_response_file(response_csv_path)
@@ -289,7 +279,7 @@ class Tender(models.Model):
         file_dir = os.path.join(self._get_processing_folder(), 'file')
         html_dir = os.path.join(self._get_processing_folder(), 'html')
 
-        text_pipes.prozorro_file_to_html([self.tender_id], file_dir, html_dir)
+        text_pipe.prozorro_file_to_html([self.tender_id], file_dir, html_dir)
 
         # 3. Each html split in to sentences and write to DB as file chunks
         corp = mytextpipe.corpus.HTMLCorpusReader(root=html_dir, clean_text=True, language='russian')
@@ -400,20 +390,4 @@ class TenderFile(models.Model):
     tender_id = fields.Many2one('tender_cat.tender',
                                 string='Assigned to',
                                 index=True)
-
     req_docs_score = fields.Integer()
-
-
-class TenderLabels(models.Model):
-    """ Labels of tender's objects """
-    _name = "tender_cat.label"
-    _description = "Label"
-
-    name = fields.Char('Name', required=True)
-    color = fields.Integer(string='Color Index')
-
-    # color_label_ids = fields.Many2many('tender_cat.label', string='Colors')
-
-    _sql_constraints = [
-        ('name_uniq', 'unique (name)', "Label name already exists!"),
-    ]

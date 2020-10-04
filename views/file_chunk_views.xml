@@ -40,6 +40,7 @@
                 <tree string="Texts" create="false" delete="false" edit="true" editable="bottom" limit="255" class="o_text_list file_chunk_tree">
 
                     <field name="user_label_ids" optional="show" widget="many2many_tags" options="{'color_field': 'color', 'no_create': True, 'no_create_edit': True}"/>
+
                     <field name="chunk_text" optional="show" readonly="1"/>
                     <field name="chunk_id" string="ID"  optional="show" readonly="1"/>
                     <field name="tender_id" string="Tender" optional="hide" readonly="1"/>

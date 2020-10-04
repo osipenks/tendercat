@@ -19,12 +19,15 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/tender_cat_views.xml',
+        'views/views.xml',
         'views/tender_views.xml',
         'views/file_chunk_views.xml',
-        'views/label_views.xml',
+        'views/data_label_views.xml',
+        'views/data_model_views.xml',
         'views/config_settings.xml',
+        'views/data_change_register_views.xml',
         'views/templates.xml',
+        'wizard/make_dump_file_chunk_views.xml',
     ],
 
     'css': ['static/src/css/tender_cat.css'],

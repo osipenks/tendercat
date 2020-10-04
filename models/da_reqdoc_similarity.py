@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+# Data algorithm: to find required document types
+# use TF-IDF vectorizer in doc2bow model and simple similarity
+
 from ..libcat.mytextpipe import mytextpipe
 import os
 import logging
