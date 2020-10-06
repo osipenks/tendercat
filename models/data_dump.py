@@ -44,21 +44,29 @@ class DataDump:
         proc_folder = str(self._env["ir.config_parameter"].sudo()
                           .get_param("tender_cat.processing_folder", default='~/'))
         if data_model is not None:
-            model_folder = os.path.join(proc_folder, 'model', 'dump', str(data_model.id))
+            if type(data_model) is int:
+                model_folder = os.path.join(proc_folder, 'model', 'dump', str(data_model))
+            else:
+                model_folder = os.path.join(proc_folder, 'model', 'dump', str(data_model.id))
         else:
             model_folder = os.path.join(proc_folder, 'model', 'dump')
         if not os.path.exists(model_folder):
             os.makedirs(model_folder)
         return model_folder
 
-    def make_dump(self, data_type, ids):
+    def make_dump(self, data_type, ids=None, folder=None):
         """
         Make dump for models, who interested in data_type
         """
+        dump_folder = self.folder(data_model) if folder is None else folder
+
+        if not os.path.exists(dump_folder):
+            os.makedirs(dump_folder)
+
         for data_model_id in self._data_model_ids:
             data_model = self._env['tender_cat.data.model'].browse(data_model_id)
             if data_model:
-                data_model.dump_data(self.folder(data_model), data_type, ids)
+                data_model.dump_data(dump_folder, data_type=data_type, ids=ids)
 
     def changes(self, data_model=None):
         """

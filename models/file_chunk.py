@@ -15,6 +15,7 @@ class FileChunk(models.Model):
     tender_file_id = fields.Many2one('ir.attachment', index=True, string='File', required=True)
 
     user_label_ids = fields.Many2many('tender_cat.label', string='Labels', index=True)
+    user_edited_label = fields.Boolean(default=False)
 
     chunk_id = fields.Integer(string='Chunk ID', index=True, group_operator='count')
     name = fields.Char(string='Chunk ID')
@@ -41,6 +42,7 @@ class FileChunk(models.Model):
         # If user changes label, register chunk for dumping
         user_label_ids = vals.get('user_label_ids', 0)
         if user_label_ids:
+            vals['user_edited_label'] = 1  # mark chunk as user labeled
             for labels in vals['user_label_ids']:
                 value_op = labels[0]
                 ids = []

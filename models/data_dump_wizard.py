@@ -14,7 +14,14 @@ class DataDumpWizard(models.TransientModel):
     _description = 'Dump data for data models'
 
     data_model_id = fields.Many2one('tender_cat.data.model', string='Data model')
-    user_id = fields.Many2one('res.users', 'User', index=True)
+
+    labels_kind = fields.Selection([
+        ('edited', 'Only labeled by user'),
+        ('all', 'All labeled data')],
+        'Labels', required=True, default='edited',
+    )
+
+    dump_folder = fields.Char(string="Dump to folder")
 
     @api.model
     def default_get(self, default_fields):
@@ -29,7 +36,19 @@ class DataDumpWizard(models.TransientModel):
                 found_ids = self.env['tender_cat.data.model'].search([('use_data_dumping', '=', 1)])
                 if found_ids:
                     result['data_model_id'] = found_ids[0].id
+            result['labels_kind'] = 'all'
+
+        data_model_id = result.get('data_model_id')
+        if data_model_id:
+            dump = data_dump.DataDump(self.env, data_model_id)
+            result['dump_folder'] = dump.folder(data_model_id)
+
         return result
+
+    @api.onchange('data_model_id')
+    def _onchange_tender(self):
+        dump = data_dump.DataDump(self.env, self.data_model_id)
+        self.dump_folder = dump.folder(self.data_model_id)
 
     def action_make_data_dump(self):
         active_ids = self.env.context.get('active_ids')
@@ -51,11 +70,23 @@ class DataDumpWizard(models.TransientModel):
         }
 
     def make_data_dump(self):
+        dump = data_dump.DataDump(self.env, self.data_model_id.id)
         active_model = self._context.get('active_model')
+        chunks = self.env['tender_cat.file_chunk']
         if active_model == 'tender_cat.data.model':
-            pass
+            if self.labels_kind == 'all':
+                dump.make_dump('file_chunk', folder=self.dump_folder)
+            else:
+                chunk_ids = chunks.search([('user_edited_label', '=', 1)]).ids
+                dump.make_dump('file_chunk', ids=chunk_ids, folder=self.dump_folder)
         elif active_model == 'tender_cat.file_chunk':
             record_ids = self._context.get('active_ids')
             if record_ids:
-                dump = data_dump.DataDump(self.env, self.data_model_id.id)
-                dump.make_dump('file_chunk', record_ids)
+                if self.labels_kind == 'all':
+                    dump.make_dump('file_chunk', ids=record_ids, folder=self.dump_folder)
+                else:
+                    chunk_ids = chunks.search(['&',
+                                               ('user_edited_label', '=', 1),
+                                               ('id', 'in', tuple(record_ids)), ]).ids
+                    if chunk_ids:
+                        dump.make_dump('file_chunk', ids=chunk_ids, folder=self.dump_folder)
