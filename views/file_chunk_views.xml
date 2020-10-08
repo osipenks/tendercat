@@ -55,7 +55,6 @@
 		<record id="view_file_chunk_search" model="ir.ui.view">
 			<field name="name">tender_cat.file_chunk.search</field>
 			<field name="model">tender_cat.file_chunk</field>
-
 			<field name="arch" type="xml">
 				<search string="Texts">
 					<field name="chunk_text" string="Text"/>

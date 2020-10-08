@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields
+from odoo import models, fields, api, _
+from . import da_reqdoc_classifier
+from . import utils
 import logging
 import csv
 import os
+
 
 _logger = logging.getLogger(__name__)
 
@@ -25,20 +28,120 @@ class DataModel(models.Model):
         string='Use labels',
     )
 
+    last_activity_id = fields.Many2one('tender_cat.data.model.activity', string='Data model activity')
+    activity_started = fields.Boolean()
+
+    activities_count = fields.Integer(compute='_compute_activities_count',
+                                      string="Number of required documents")
+
+    def _compute_activities_count(self):
+        query = """SELECT COUNT(DISTINCT id) AS count
+                                FROM tender_cat_data_model_activity
+                                WHERE   data_model_id = %s"""
+        for data_model in self:
+            self.env.cr.execute(query, (data_model.id,))
+            res = self.env.cr.dictfetchone()
+            if res:
+                data_model.activities_count = res['count']
+
+    def start_activity(self, activity_type, cron=True):
+
+        activity = self.env['tender_cat.data.model.activity']
+        new_act = activity.create({'data_model_id': self.id,
+                                   'activity_type': activity_type,
+                                   })
+
+        self.write({'last_activity_id': new_act.id, 'activity_started': True,})
+
+        code = 'env[\'tender_cat.data.model.activity\'].browse({}).run(env[\'tender_cat.data.model\'].browse({}))'\
+            .format(new_act.id, self.id)
+        task_name = 'Data model {}: {}'.format(self.id, activity_type)
+
+        utils.start_cron_task(self, task_name, code)
+
+    def stop_activity(self):
+        self.write({'activity_started': False})
+
+    def get_model_folder(self, folder_type):
+        folder_for_models = str(self.env["ir.config_parameter"].sudo()
+                                .get_param("tender_cat.processing_folder", default='~/'))
+        return os.path.join(folder_for_models, 'model', folder_type, str(self.id))
+
+    def get_user_labeled_files(self):
+        #   Dump only user labeled files
+        label_ids = self.label_ids.mapped('id')
+        query = """SELECT DISTINCT tender_file_id
+                    FROM tender_cat_file_chunk_tender_cat_label_rel AS chunk_labels
+                    LEFT JOIN  tender_cat_file_chunk AS chunks
+                    ON chunks.id = chunk_labels.tender_cat_file_chunk_id AND chunks.user_edited_label
+                    WHERE tender_cat_label_id IN %s AND tender_file_id IS NOT NULL
+                    """
+        self.env.cr.execute(query, (tuple(label_ids),))
+        return list(v[0] for v in self.env.cr.fetchall())
+
     def refit_make_sens(self):
         return self._refit_make_sens
 
     def tuning_make_sens(self):
         return self._tuning_make_sens
 
-    def tune(self):
-        pass
+    def tune_model(self):
+        raise NotImplementedError
 
     def refit_model(self):
-        pass
+        """
+        Change model stage to Refitting
+        Dump all user labeled data
+        Call data algorithm to fit the model
+        Backup model files to ./bkp folder
+        Copy new model files to folder ./trained
+        Change model stage to Ready
+        """
+        # 1. Dump all user labeled data
+        dump_folder = self.get_model_folder('dump')
+        if not os.path.exists(dump_folder):
+            os.makedirs(dump_folder)
+
+        # Clean folder before dumping
+        for filename in os.listdir(dump_folder):
+            file_path = os.path.join(dump_folder, filename)
+            try:
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)
+            except Exception as e:
+                _logger.warning('Failed to delete {}. Reason: {}}'.format(file_path, e))
+
+        # Dump files to folder
+        file_ids = self.get_user_labeled_files()
+        self.dump_chunk_files(dump_folder, file_ids)
+
+        # 2. Call data algorithm to fit the model
+        trained_folder = self.get_model_folder('trained')
+        if not os.path.exists(trained_folder):
+            os.makedirs(trained_folder)
+
+        model = da_reqdoc_classifier.DataTransformer(data_folder=dump_folder,
+                                                     trained_folder=trained_folder)
+        model.fit()
+
+        # 3. Stop activity, if it started before
+        self.stop_activity()
 
     def transform_data(self):
-        pass
+        raise NotImplementedError
+
+    def stat_button_data_model_activities(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'tender_cat.data.model.activity',
+            'name': "Activities",
+            'view_mode': 'tree,form',
+            'target': 'current',
+            'context': {'search_default_data_model_id': self.id},
+        }
+
+    def action_refit_model(self):
+        self.start_activity('refit')
 
     def action_make_data_dump(self):
         """
@@ -108,7 +211,8 @@ class DataModel(models.Model):
                             FROM tender_cat_file_chunk_tender_cat_label_rel AS chunk_labels
                             LEFT JOIN  tender_cat_file_chunk AS chunks
                             ON chunks.id = chunk_labels.tender_cat_file_chunk_id
-                            WHERE tender_cat_label_id IN %s"""
+                            WHERE tender_cat_label_id IN %s AND tender_file_id IS NOT NULL
+                            """
                 self.env.cr.execute(query, (tuple(label_ids),))
                 file_ids = list(v[0] for v in self.env.cr.fetchall())
                 self.dump_chunk_files(folder, file_ids)
@@ -117,4 +221,4 @@ class DataModel(models.Model):
         self.write({'dump_number': self.dump_number})
 
     def dump_changes(self, data_type=None, ids=None):
-        pass
+        raise NotImplementedError

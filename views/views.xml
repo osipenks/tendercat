@@ -31,6 +31,12 @@
 			<field name="view_mode">tree,form</field>
 		</record>
 
+		<record model="ir.actions.act_window" id="action_tender_cat_data_model_activity">
+			<field name="name">Data model activities</field>
+			<field name="res_model">tender_cat.data.model.activity</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
 		<record id="action_tender_cat_settings_general" model="ir.actions.act_window">
 			<field name="name">General settings</field>
 			<field name="type">ir.actions.act_window</field>
@@ -67,6 +73,9 @@
 
 		<menuitem name="Data change registration" id="tender_cat_menu_change_register" parent="tender_cat_menu_data_sub_menu"
 				  action="tender_cat_change_register_action" sequence="400"/>
+
+		<menuitem name="Data models activities" id="tender_cat_data_model_activity" parent="tender_cat_menu_data_sub_menu"
+				  action="action_tender_cat_data_model_activity" sequence="500"/>
 
 	</data>
 </odoo>

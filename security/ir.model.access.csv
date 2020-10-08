@@ -5,3 +5,4 @@ access_tender_cat_file_chunk,tender_cat.file_chunk,model_tender_cat_file_chunk,b
 access_tender_cat_label,tender_cat.label,model_tender_cat_label,base.group_user,1,1,1,1
 access_tender_cat_data_model,tender_cat.data.model,model_tender_cat_data_model,base.group_user,1,1,1,1
 access_tender_cat_change_register,tender_cat.change.register,model_tender_cat_change_register,base.group_user,1,1,1,1
+access_tender_cat_data_model_activity,tender_cat.data.model.activity,model_tender_cat_data_model_activity,base.group_user,1,1,1,1

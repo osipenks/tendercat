@@ -1,0 +1,41 @@
+<odoo>
+	<data>
+		<!-- Data model activity tree view -->
+		<record id="view_tender_cat_data_model_activity_tree" model="ir.ui.view">
+			<field name="name">tender_cat.data.model.activity.tree</field>
+			<field name="model">tender_cat.data.model.activity</field>
+			<field name="arch" type="xml">
+				<tree string="Data model activity">
+					<field name="data_model_id" optional="show"/>
+    				<field name="activity_type" optional="show"/>
+					<field name="start_time" optional="show"/>
+    				<field name="end_time" optional="show"/>
+					<field name="duration" optional="show"/>
+    				<field name="user_id" optional="show"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+
+		<!-- Data model activity search -->
+		<record id="view_tender_cat_data_model_activity_search" model="ir.ui.view">
+			<field name="name">tender_cat.data.model.activity.search</field>
+			<field name="model">tender_cat.data.model.activity</field>
+			<field name="arch" type="xml">
+				<field name="name" string="Name"/>
+				<field name="activity_log" string="Log"/>
+				<field name="data_model_id" string="Data model"/>
+
+				<search>
+					<group expand="0" string="Group By">
+						<filter string="Data model" name="data_model" context="{'group_by': 'data_model_id'}"/>
+						<filter string="Activity type" name="type" context="{'group_by': 'activity_type'}"/>
+						<filter string="User" name="user" context="{'group_by': 'user_id'}"/>
+					</group>
+				</search>
+			</field>
+		</record>
+	</data>
+</odoo>
