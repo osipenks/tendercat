@@ -20,7 +20,7 @@
                                 <div class="o_setting_right_pane">
                                     <span class="o_form_label">Processing folder</span>
                                     <div class="text-muted">
-                                        Define processing folder
+                                        Define processing folder to store dumps, models and temporary data
                                     </div>
                                     <div class="content-group">
                                         <div class="row mt16">
@@ -33,6 +33,25 @@
                                     </div>
                                 </div>
                             </div>
+
+							<div class="col-12 col-md-12 o_setting_box">
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Data models</span>
+                                    <div class="text-muted">
+                                    </div>
+                                    <div class="content-group">
+                                        <div class="row mt16">
+                                            <label
+                                                class="col-md-3 o_light_label"
+                                                for="req_docs_data_model"
+                                            />
+                                            <field name="req_docs_data_model" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>

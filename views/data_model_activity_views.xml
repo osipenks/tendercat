@@ -7,35 +7,63 @@
 			<field name="arch" type="xml">
 				<tree string="Data model activity">
 					<field name="data_model_id" optional="show"/>
-    				<field name="activity_type" optional="show"/>
+					<field name="activity_type" optional="show"/>
 					<field name="start_time" optional="show"/>
-    				<field name="end_time" optional="show"/>
+					<field name="end_time" optional="show"/>
 					<field name="duration" optional="show"/>
-    				<field name="user_id" optional="show"/>
+					<field name="user_id" optional="show"/>
 				</tree>
 			</field>
 		</record>
-
-
-
 
 		<!-- Data model activity search -->
 		<record id="view_tender_cat_data_model_activity_search" model="ir.ui.view">
 			<field name="name">tender_cat.data.model.activity.search</field>
 			<field name="model">tender_cat.data.model.activity</field>
 			<field name="arch" type="xml">
-				<field name="name" string="Name"/>
-				<field name="activity_log" string="Log"/>
-				<field name="data_model_id" string="Data model"/>
-
-				<search>
+				<search string="Activities">
+					<field name="activity_log" string="Log"/>
+					<field name="data_model_id" string="Data model"/>
+					<field name="activity_type" string="Activity type"/>
 					<group expand="0" string="Group By">
-						<filter string="Data model" name="data_model" context="{'group_by': 'data_model_id'}"/>
-						<filter string="Activity type" name="type" context="{'group_by': 'activity_type'}"/>
-						<filter string="User" name="user" context="{'group_by': 'user_id'}"/>
+						<filter string="Data model" name="data_model_id" context="{'group_by': 'data_model_id'}"/>
+						<filter string="Activity type" name="activity_type" context="{'group_by': 'activity_type'}"/>
+						<filter string="User" name="user_id" context="{'group_by': 'user_id'}"/>
 					</group>
 				</search>
 			</field>
 		</record>
+
+		<!-- Data model activity form view -->
+		<record id="view_file_data_model_activity_form" model="ir.ui.view">
+			<field name="name">tender_cat.data.model.activity.form</field>
+			<field name="model">tender_cat.data.model.activity</field>
+			<field name="arch" type="xml">
+				<form string="Data model activity">
+					<sheet>
+						<group>
+							<h1>
+								<field name="activity_type"/>
+							</h1>
+						</group>
+						<group>
+							<group>
+								<field name="duration"/>
+								<field name="start_time"/>
+								<field name="end_time"/>
+							</group>
+							<group>
+								<field name="data_model_id"/>
+								<field name="user_id"/>
+							</group>
+						</group>
+						<group>
+							<field name="activity_log" label="Log"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
 	</data>
 </odoo>

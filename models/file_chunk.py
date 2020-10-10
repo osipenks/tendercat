@@ -18,7 +18,7 @@ class FileChunk(models.Model):
     user_edited_label = fields.Boolean(default=False)
 
     chunk_id = fields.Integer(string='Chunk ID', index=True, group_operator='count')
-    name = fields.Char(string='Chunk ID')
+    name = fields.Char(string='Chunk name')
     chunk_text = fields.Text(string='Text', index=True, help='')
 
     is_req_doc = fields.Boolean(string='It\'s a required document')
@@ -29,6 +29,7 @@ class FileChunk(models.Model):
     is_qualification = fields.Boolean(string='It\'s a qualification')
 
     _order = 'tender_file_id asc, chunk_id asc'
+    _log_access = False
 
     # score, predicted_tags, user_tags, tender_assessment
 

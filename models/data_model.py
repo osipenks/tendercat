@@ -3,6 +3,7 @@
 from odoo import models, fields, api, _
 from . import da_reqdoc_classifier
 from . import utils
+from .data_model_activity import RunActivity, RunAsyncActivity
 import logging
 import csv
 import os
@@ -51,7 +52,7 @@ class DataModel(models.Model):
                                    'activity_type': activity_type,
                                    })
 
-        self.write({'last_activity_id': new_act.id, 'activity_started': True,})
+        self.write({'last_activity_id': new_act.id, 'activity_started': True, })
 
         code = 'env[\'tender_cat.data.model.activity\'].browse({}).run(env[\'tender_cat.data.model\'].browse({}))'\
             .format(new_act.id, self.id)
@@ -59,7 +60,9 @@ class DataModel(models.Model):
 
         utils.start_cron_task(self, task_name, code)
 
-    def stop_activity(self):
+        return int(new_act.id)
+
+    def stop_activity(self, activity_id=None):
         self.write({'activity_started': False})
 
     def get_model_folder(self, folder_type):
@@ -74,8 +77,7 @@ class DataModel(models.Model):
                     FROM tender_cat_file_chunk_tender_cat_label_rel AS chunk_labels
                     LEFT JOIN  tender_cat_file_chunk AS chunks
                     ON chunks.id = chunk_labels.tender_cat_file_chunk_id AND chunks.user_edited_label
-                    WHERE tender_cat_label_id IN %s AND tender_file_id IS NOT NULL
-                    """
+                    WHERE tender_cat_label_id IN %s AND tender_file_id IS NOT NULL"""
         self.env.cr.execute(query, (tuple(label_ids),))
         return list(v[0] for v in self.env.cr.fetchall())
 
@@ -90,13 +92,13 @@ class DataModel(models.Model):
 
     def refit_model(self):
         """
-        Change model stage to Refitting
+        Change model stage to Refit
         Dump all user labeled data
         Call data algorithm to fit the model
-        Backup model files to ./bkp folder
-        Copy new model files to folder ./trained
+        Backup model files to ./bkp folder, copy new model files to folder ./trained
         Change model stage to Ready
         """
+        # todo: with DataModelActivity('Refit'):
         # 1. Dump all user labeled data
         dump_folder = self.get_model_folder('dump')
         if not os.path.exists(dump_folder):
@@ -109,11 +111,15 @@ class DataModel(models.Model):
                 if os.path.isfile(file_path) or os.path.islink(file_path):
                     os.unlink(file_path)
             except Exception as e:
-                _logger.warning('Failed to delete {}. Reason: {}}'.format(file_path, e))
+                _logger.warning('Failed to delete {}: {}'.format(file_path, e))
+                self.stop_activity()
 
         # Dump files to folder
         file_ids = self.get_user_labeled_files()
         self.dump_chunk_files(dump_folder, file_ids)
+        if not file_ids:
+            _logger.warning('Refit for {} failed, there is no data for model!'.format(self.name))
+            return
 
         # 2. Call data algorithm to fit the model
         trained_folder = self.get_model_folder('trained')
@@ -127,8 +133,15 @@ class DataModel(models.Model):
         # 3. Stop activity, if it started before
         self.stop_activity()
 
-    def transform_data(self):
-        raise NotImplementedError
+    def transform_data(self, obj_id=None):
+        # todo: make child classes, specialized models for different tasks
+        with RunActivity(self, 'Transform', obj_id) as a:
+            a.log('Running within with statement, a: {}'.format(a))
+            # Prepare data for classification:
+            #   data frame with label, text_id, text, file_name, file_id, tender_id, tender_name
+            # Call data algorithm transform,
+            # Updates text chunks labels
+            a.log('A little bit more logging')
 
     def stat_button_data_model_activities(self):
         return {
@@ -141,7 +154,7 @@ class DataModel(models.Model):
         }
 
     def action_refit_model(self):
-        self.start_activity('refit')
+        self.start_activity('Refit')
 
     def action_make_data_dump(self):
         """
@@ -190,7 +203,7 @@ class DataModel(models.Model):
                                 writer.writerow(val)
                                 chunk_written = True
                         if not chunk_written:
-                            # if not write without label
+                            # if not, write without label
                             writer.writerow(val)
                     else:
                         writer.writerow(val)

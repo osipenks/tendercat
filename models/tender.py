@@ -87,6 +87,10 @@ class Tender(models.Model):
                 .get_param("tender_cat.processing_folder", default='~/')
         )
 
+    @api.model
+    def _get_req_documents_data_model(self):
+        return int(self.env['ir.config_parameter'].sudo().get_param('tender_cat.req_docs_data_model', default=0))
+
     def file_tree_view(self):
         attachment_action = self.env.ref('base.action_attachment')
         action = attachment_action.read()[0]
@@ -133,6 +137,7 @@ class Tender(models.Model):
                     'res_model': 'tender_cat.tender',
                     'res_id': self.id,
                 }
+                # todo: bug
 
                 found_attachment = attachments.search(
                     ['&', ('name', '=', file_name), ('res_model', '=', 'tender_cat.tender'), ('res_id', '=', self.id)])
@@ -244,33 +249,35 @@ class Tender(models.Model):
                             'user_label_ids': [(4, labels_ids[0])]
                         })
                     else:
-                        chunk.write({
-                            'req_doc_score': score_val,
-                            'is_req_doc': is_req_doc,
-                        })
+                        chunk.write({'req_doc_score': score_val, 'is_req_doc': is_req_doc, })
             f.close()
 
     def mark_required_docs(self):
         """
-        Iterate through tender chunks and calculate similarities to sentences of model dataset
-        If average similarity is above 0.7 (??) mark chunk as document
+        Iterate through tender chunks and calculate similarities to sentences of model dataset If average similarity
+        is above 0.7 (??) mark chunk as document
         """
+        data_model = self.env['tender_cat.data.model'].browse(self._get_req_documents_data_model())
+        if data_model:
+            data_model.transform_data(self.id)
 
-        # 1. Dump tender texts to csv
-        request_csv_path = self._get_request_file()
-        response_csv_path = str(request_csv_path).replace('_request.', '_response.')
-
-        # 2. Call transformer, giving him request and response paths
-        da_reqdoc_similarity.PROCESSING_FOLDER = self._get_processing_folder()  # ???
-        da_reqdoc_similarity.doc_type_similarity(request_csv=request_csv_path,
-                                                 response_csv=response_csv_path)
+        # # 1. Dump tender texts to csv
+        # request_csv_path = self._get_request_file()
+        # response_csv_path = str(request_csv_path).replace('_request.', '_response.')
+        #
+        # # 2. Call transformer, giving him request and response paths
+        # da_reqdoc_similarity.PROCESSING_FOLDER = self._get_processing_folder()  # ???
+        # da_reqdoc_similarity.doc_type_similarity(request_csv=request_csv_path,
+        #                                          response_csv=response_csv_path)
 
         # 3. Process response csv file
-        self._process_response_file(response_csv_path)
+        # self._process_response_file(response_csv_path)
 
         # Delete files
 
     def make_assessment(self):
+
+        # todo: check if we need 1 and 2, if files not changed since last conversion
         # 1. Delete old text chunks
         query = 'DELETE FROM tender_cat_file_chunk WHERE tender_id = {}'.format(self.id)
         self.env.cr.execute(query)
@@ -385,6 +392,7 @@ class Tender(models.Model):
 
 class TenderFile(models.Model):
     _name = 'tender_cat.file'
+    _description = 'Tender file'
     _inherit = 'ir.attachment'
 
     tender_id = fields.Many2one('tender_cat.tender',

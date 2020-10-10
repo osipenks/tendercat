@@ -11,4 +11,11 @@ class ResConfigSettings(models.TransientModel):
         config_parameter="tender_cat.processing_folder",
     )
 
+    req_docs_data_model = fields.Many2one('tender_cat.data.model',
+                                          string="Data model to find documents required for tender",
+                                          help="Data model to find documents required for tender",
+                                          config_parameter="tender_cat.req_docs_data_model",
+                                          )
+
+
 
