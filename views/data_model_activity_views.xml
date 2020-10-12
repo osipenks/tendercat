@@ -26,8 +26,8 @@
 					<field name="data_model_id" string="Data model"/>
 					<field name="activity_type" string="Activity type"/>
 					<group expand="0" string="Group By">
-						<filter string="Data model" name="data_model_id" context="{'group_by': 'data_model_id'}"/>
 						<filter string="Activity type" name="activity_type" context="{'group_by': 'activity_type'}"/>
+						<filter string="Data model" name="data_model_id" context="{'group_by': 'data_model_id'}"/>
 						<filter string="User" name="user_id" context="{'group_by': 'user_id'}"/>
 					</group>
 				</search>
@@ -58,7 +58,9 @@
 							</group>
 						</group>
 						<group>
-							<field name="activity_log" label="Log"/>
+							<div style="font-family: monospace;">
+								<field name="activity_log" label="Log" />
+							</div>
 						</group>
 					</sheet>
 				</form>

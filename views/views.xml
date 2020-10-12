@@ -71,11 +71,13 @@
 		<menuitem name="Data models" id="tender_cat_menu_data_models" parent="tender_cat_menu_data_sub_menu"
 				  action="tender_cat_data_models_action" sequence="300"/>
 
-		<menuitem name="Data change registration" id="tender_cat_menu_change_register" parent="tender_cat_menu_data_sub_menu"
-				  action="tender_cat_change_register_action" sequence="400"/>
-
 		<menuitem name="Data models activities" id="tender_cat_data_model_activity" parent="tender_cat_menu_data_sub_menu"
-				  action="action_tender_cat_data_model_activity" sequence="500"/>
+				  action="action_tender_cat_data_model_activity" sequence="400"/>
+
+		<!-- Not used at the moment
+		<menuitem name="Data change registration" id="tender_cat_menu_change_register" parent="tender_cat_menu_data_sub_menu"
+				  action="tender_cat_change_register_action" sequence="500"/>
+		-->
 
 	</data>
 </odoo>

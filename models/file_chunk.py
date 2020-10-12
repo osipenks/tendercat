@@ -11,7 +11,7 @@ class FileChunk(models.Model):
     _name = 'tender_cat.file_chunk'
     _description = "File chunk"
 
-    tender_id = fields.Many2one('tender_cat.tender', index=True, string='Tender', required=True)
+    tender_id = fields.Many2one('tender_cat.tender', index=True, ondelete='cascade', string='Tender', required=True)
     tender_file_id = fields.Many2one('ir.attachment', index=True, string='File', required=True)
 
     user_label_ids = fields.Many2many('tender_cat.label', string='Labels', index=True)

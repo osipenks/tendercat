@@ -26,6 +26,9 @@ class DataDump:
         """
         Register changes for all models who use this particular label_id
         """
+        if not self._data_model_ids:
+            return
+
         query = """SELECT data_model_id FROM tender_cat_data_model_labels_rel 
                     WHERE label_id = %s AND data_model_id IN %s """
         self._env.cr.execute(query, (label_id, tuple(self._data_model_ids)))

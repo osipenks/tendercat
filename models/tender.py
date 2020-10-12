@@ -250,7 +250,6 @@ class Tender(models.Model):
                         })
                     else:
                         chunk.write({'req_doc_score': score_val, 'is_req_doc': is_req_doc, })
-            f.close()
 
     def mark_required_docs(self):
         """
@@ -395,7 +394,7 @@ class TenderFile(models.Model):
     _description = 'Tender file'
     _inherit = 'ir.attachment'
 
-    tender_id = fields.Many2one('tender_cat.tender',
+    tender_id = fields.Many2one('tender_cat.tender', ondelete='cascade',
                                 string='Assigned to',
                                 index=True)
     req_docs_score = fields.Integer()
