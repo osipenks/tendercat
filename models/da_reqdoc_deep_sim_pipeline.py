@@ -11,6 +11,7 @@ from uk_stemmer import UkStemmer
 from gensim.models import Phrases
 from gensim.parsing import preprocessing
 from pyhash import murmur3_x64_128
+from . import utils
 
 _logger = logging.getLogger(__name__)
 _set_name = 'training set'
