@@ -820,7 +820,11 @@ class DeepSimProd(BaseEstimator, TransformerMixin):
 
                 labels_score[label_id] = score
 
-            winner_id = sorted(labels_score, key=labels_score.get, reverse=True)[0]
+            sorted_labels =  sorted(labels_score, key=labels_score.get, reverse=True)
+            if len(sorted_labels) == 0:
+                winner_id = _no_label_id
+            else:
+                winner_id = sorted(labels_score, key=labels_score.get, reverse=True)[0]
 
             vals = {
                 'label_id': winner_id,
