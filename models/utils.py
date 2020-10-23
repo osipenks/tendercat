@@ -7,8 +7,25 @@ import time
 from odoo import registry as registry_get
 from odoo.sql_db import db_connect
 import logging
+import pandas as pd
+import os
 
 _logger = logging.getLogger(__name__)
+
+
+def folder_csv_to_dataframe(folder):
+    csvs = []
+    for root, dirs, files in os.walk(folder):
+        for f in files:
+            if f.endswith(".csv"):
+                try:
+                    csvs.append(pd.read_csv(os.path.join(folder, f)))
+                except (FileExistsError, IOError, pd.errors.EmptyDataError) as e:
+                    _logger.error('{}: {}'.format(f, e))
+    if csvs:
+        return pd.concat(csvs, ignore_index=True)
+    else:
+        return pd.DataFrame()
 
 
 def start_cron_task(obj, task_name, code):

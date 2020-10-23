@@ -11,7 +11,10 @@
                         <button name="make_assessment" string="Assessment" type="object" class="oe_read_only"/>
                     </header>
                 <sheet string="Tender">
-                    <div class="oe_button_box" name="button_box" groups="base.group_user">
+
+					<field name="is_training_example" invisible="1"/>
+					<widget name="web_ribbon" text="Example" attrs="{'invisible': [('is_training_example','=',False)]}"/>
+					<div class="oe_button_box" name="button_box" groups="base.group_user">
                         <button  class="oe_stat_button" name="texts_tree_view" type="object" icon="fa-file-text-o">
                             <field string="Documents list" name="doc_count" widget="statinfo"/>
                         </button>
@@ -20,9 +23,16 @@
                             <field string="Qualifications" name="req_count" widget="statinfo"/>
                         </button>
                         -->
-                        <button class="oe_stat_button" name="file_tree_view" type="object" icon="fa-database">
+                        <button class="oe_stat_button" name="file_tree_view" type="object" icon="fa-database" style = "margin-right: 2em; ">
                             <field string="Files" name="file_count" widget="statinfo"/>
                         </button>
+
+						<!--
+						<button class="oe_stat_button" string="Training example" name="set_is_training_example" type="object"
+								style = "margin-right: 3%; " icon="fa-bullseye">
+                        </button>
+                        -->
+
                     </div>
 
                     <field name="tender_id" string="Tender ID" placeholder="Enter tender identifier..."/>
@@ -70,6 +80,7 @@
                     <field name="user_id" invisible="context.get('user_invisible', False)" optional="show"/>
                     <field name="doc_count" optional="hide"/>
                     <field name="file_count" optional="hide"/>
+					<field name="is_training_example" optional="hide"/>
                 </tree>
             </field>
       </record>
@@ -96,6 +107,16 @@
             <field name="view_mode">tree,form</field>
 
         </record>
+
+	  <record model="ir.actions.server"
+			  id="tender_cat_tender_training_example_action"
+			  >
+		  <field name="name">Example for training</field>
+		  <field name="model_id" ref="model_tender_cat_tender"/>
+		  <field name="binding_type">action</field>
+			<field name="state">code</field>
+			<field name="code">record.set_is_training_example()</field>
+	  </record>
 
 
 

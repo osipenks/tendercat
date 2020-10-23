@@ -28,7 +28,8 @@
         'views/data_change_register_views.xml',
         'views/data_model_activity_views.xml',
         'views/templates.xml',
-        'wizard/data_dump_wizard_views.xml',
+        'wizard/wizard_data_dump_views.xml',
+        'wizard/wizard_remove_labels_views.xml',
         'views/views.xml',
     ],
 

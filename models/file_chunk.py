@@ -38,12 +38,13 @@ class FileChunk(models.Model):
         tender = self.env['tender_cat.tender'].browse(self.tender_id.id)
         if tender:
             tender.mark_contexts(self._origin.id)
+        self.write({'user_edited_label': 1})
 
     def write(self, vals):
         # If user changes label, register chunk for dumping
         user_label_ids = vals.get('user_label_ids', 0)
         if user_label_ids:
-            vals['user_edited_label'] = 1  # mark chunk as user labeled
+            # vals['user_edited_label'] = 1  # mark chunk as user labeled
             for labels in vals['user_label_ids']:
                 value_op = labels[0]
                 ids = []

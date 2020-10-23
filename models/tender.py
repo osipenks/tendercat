@@ -8,7 +8,6 @@ from ..libcat.mytextpipe import mytextpipe
 import os
 import base64
 import logging
-from . import da_reqdoc_similarity
 import random
 import csv
 
@@ -50,6 +49,8 @@ class Tender(models.Model):
                               index=True, tracking=True)
 
     is_filled = fields.Boolean(default=False)
+    is_training_example = fields.Boolean(default=False)
+
     date_created = fields.Datetime(string='Created', readonly=True, default=lambda self: fields.Datetime.now())
 
     _order = 'date_created desc'
@@ -90,6 +91,13 @@ class Tender(models.Model):
     @api.model
     def _get_req_documents_data_model(self):
         return int(self.env['ir.config_parameter'].sudo().get_param('tender_cat.req_docs_data_model', default=0))
+
+    def set_is_training_example(self):
+        if self.is_training_example:
+            vals = {'is_training_example': 0}
+        else:
+            vals = {'is_training_example': 1}
+        self.write(vals)
 
     def file_tree_view(self):
         attachment_action = self.env.ref('base.action_attachment')
@@ -259,18 +267,6 @@ class Tender(models.Model):
         data_model = self.env['tender_cat.data.model'].browse(self._get_req_documents_data_model())
         if data_model:
             data_model.transform_data(self.id)
-
-        # # 1. Dump tender texts to csv
-        # request_csv_path = self._get_request_file()
-        # response_csv_path = str(request_csv_path).replace('_request.', '_response.')
-        #
-        # # 2. Call transformer, giving him request and response paths
-        # da_reqdoc_similarity.PROCESSING_FOLDER = self._get_processing_folder()  # ???
-        # da_reqdoc_similarity.doc_type_similarity(request_csv=request_csv_path,
-        #                                          response_csv=response_csv_path)
-
-        # 3. Process response csv file
-        # self._process_response_file(response_csv_path)
 
         # Delete files
 

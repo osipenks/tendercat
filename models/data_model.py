@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api, _
-from . import da_reqdoc_classifier
-from . import utils
+from odoo import models, fields, _
+from . import da_reqdoc_deep_sim_pipeline
+#from . import utils
 from .data_model_activity import RunActivity, RunAsyncActivity
 import logging
 import csv
@@ -56,11 +56,23 @@ class DataModel(models.Model):
     def get_user_labeled_files(self):
         #   Dump only user labeled files
         label_ids = self.label_ids.mapped('id')
-        query = """SELECT DISTINCT tender_file_id
-                    FROM tender_cat_file_chunk_tender_cat_label_rel AS chunk_labels
-                    LEFT JOIN  tender_cat_file_chunk AS chunks
-                    ON chunks.id = chunk_labels.tender_cat_file_chunk_id AND chunks.user_edited_label
-                    WHERE tender_cat_label_id IN %s AND tender_file_id IS NOT NULL"""
+        query = """
+                    SELECT tender_file_id
+                            FROM (
+                                    SELECT DISTINCT tender_file_id
+                                    FROM tender_cat_file_chunk_tender_cat_label_rel AS chunk_labels
+                                    LEFT JOIN  tender_cat_file_chunk AS chunks
+                                    ON chunks.id = chunk_labels.tender_cat_file_chunk_id AND chunks.user_edited_label
+                                    WHERE tender_cat_label_id IN %s AND tender_file_id IS NOT NULL
+                                     UNION
+                                                     SELECT DISTINCT tender_file_id
+                                                     FROM tender_cat_file_chunk AS example_chunks
+                                                              LEFT JOIN tender_cat_tender AS tender
+                                                                        ON example_chunks.tender_id = tender.id
+                                                                            AND tender.is_training_example
+                                                     WHERE tender.id IS NOT NULL
+                                 ) as sel
+                """
         self.env.cr.execute(query, (tuple(label_ids),))
         return list(v[0] for v in self.env.cr.fetchall())
 
@@ -105,10 +117,11 @@ class DataModel(models.Model):
         # 2. Call data algorithm to fit the model
         trained_folder = self.get_model_folder('trained')
 
-        model = da_reqdoc_classifier.DataTransformer()
-        model.fit(data_folder=dump_folder,
-                  trained_folder=trained_folder,
-                  a=a)
+        model = da_reqdoc_deep_sim_pipeline.DataPipeline(
+            data_folder=dump_folder,
+            trained_folder=trained_folder,
+            a=a)
+        model.fit()
 
     def transform_data(self, obj_id=None):
         # todo: make child classes, specialized models for different tasks
@@ -127,13 +140,14 @@ class DataModel(models.Model):
             self.dump_chunk_files(run_folder, file_ids, model_input)
 
             # Call algorithm to transform data
-            model = da_reqdoc_classifier.DataTransformer()
+            model = da_reqdoc_deep_sim_pipeline.DataPipeline(trained_folder=trained_folder, a=a)
             model.transform(input_file=model_input, output_file=model_output, trained_folder=trained_folder, a=a)
 
             # Check if the output data exist
             if not os.path.isfile(model_output):
                 a.log('Error: model output file {} not found'.format(model_output))
-                return
+                model_output = model_input
+                #return
 
             # Upload data from model output file, update file chunks labels
             chunks = self.env['tender_cat.file_chunk']
@@ -254,11 +268,25 @@ class DataModel(models.Model):
             else:
                 # Find file ids for labels used by data model
                 label_ids = self.label_ids.mapped('id')
-                query = """SELECT DISTINCT tender_file_id
-                            FROM tender_cat_file_chunk_tender_cat_label_rel AS chunk_labels
-                            LEFT JOIN  tender_cat_file_chunk AS chunks
-                            ON chunks.id = chunk_labels.tender_cat_file_chunk_id
-                            WHERE tender_cat_label_id IN %s AND tender_file_id IS NOT NULL
+                query = """
+                        SELECT tender_file_id
+                            FROM (
+                                     SELECT DISTINCT tender_file_id
+                                     FROM tender_cat_file_chunk_tender_cat_label_rel AS chunk_labels
+                                              LEFT JOIN tender_cat_file_chunk AS chunks
+                                                        ON chunks.id = chunk_labels.tender_cat_file_chunk_id
+                                     WHERE tender_cat_label_id IN %s
+                                       AND tender_file_id IS NOT NULL
+                            
+                                     UNION
+                            
+                                     SELECT DISTINCT tender_file_id
+                                     FROM tender_cat_file_chunk AS example_chunks
+                                              LEFT JOIN tender_cat_tender AS tender
+                                                        ON example_chunks.tender_id = tender.id
+                                                            AND tender.is_training_example
+                                     WHERE tender.id IS NOT NULL
+                                 ) as sel
                             """
                 self.env.cr.execute(query, (tuple(label_ids),))
                 file_ids = list(v[0] for v in self.env.cr.fetchall())
