@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<odoo>
+	<!-- Remove labels from texts  -->
+	<record id="view_tender_cat_remove_labels_wizard_form" model="ir.ui.view">
+		<field name="name">tender_cat.remove.labels.wizard.form</field>
+		<field name="model">tender_cat.remove.labels.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Remove labels from texts">
+				<group>
+					<field name="tender_id"/>
+				</group>
+				<group>
+					<field name="leave_user_edited_flag"/>
+				</group>
+				<footer>
+					<button name="remove_labels" type="object" string="Remove labels" class="btn-primary"/>
+					<button string="Cancel" class="btn-secondary" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<act_window
+        name="Remove labels from texts"
+        res_model="tender_cat.remove.labels.wizard"
+        binding_model="tender_cat.tender"
+        binding_views="form"
+        view_mode="form"
+        target="new"
+		id="action_tender_cat_remove_labels_wizard"
+        view_id="view_tender_cat_remove_labels_wizard_form"
+    />
+
+</odoo>
