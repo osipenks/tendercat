@@ -7,6 +7,36 @@
 			<field name="view_mode">tree,form</field>
 		</record>
 
+		<record model="ir.actions.act_window" id="tender_cat_tender_groups_action">
+			<field name="name">Tender groups</field>
+			<field name="res_model">tender_cat.tender.group</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="tender_cat_tender_proposal_action">
+			<field name="name">Tender proposals</field>
+			<field name="res_model">tender_cat.tender.proposal</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="tender_cat_proposal_template_action">
+			<field name="name">Proposal templates</field>
+			<field name="res_model">tender_cat.tender.proposal.template</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="tender_cat_tender_document_types_action">
+			<field name="name">Document types</field>
+			<field name="res_model">tender_cat.tender.document.type</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="tender_cat_tender_document_action">
+			<field name="name">Tender documents</field>
+			<field name="res_model">tender_cat.tender.document</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
 		<record model="ir.actions.act_window" id="tender_cat_file_texts_action">
 			<field name="name">File texts</field>
 			<field name="res_model">tender_cat.file_chunk</field>
@@ -46,33 +76,76 @@
 			<field name="context">{'module' : 'tender_cat'}</field>
 		</record>
 
+		<record id="action_tender_cat_companies" model="ir.actions.act_window">
+            <field name="name">Companies</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.company</field>
+            <field name="view_mode">tree,kanban,form</field>
+        </record>
+
 		<!-- Top menu item -->
 		<menuitem name="Tender.cat" id="tender_cat_menu_root" web_icon="tender_cat,static/description/icon.png"/>
 
 		<!-- Top categories -->
-		<menuitem name="Tenders" id="tender_cat_menu_tenders" parent="tender_cat_menu_root"/>
-		<menuitem name="Configuration" id="tender_cat_menu_config" parent="tender_cat_menu_root"/>
+		<menuitem name="Tender" id="tender_cat_menu_tender" parent="tender_cat_menu_root" sequence="10"/>
+		<menuitem name="Documents" id="tender_cat_menu_documents" parent="tender_cat_menu_root" sequence="20"/>
+		<menuitem name="Configuration" id="tender_cat_menu_config" parent="tender_cat_menu_root" sequence="30"/>
 
 		<!-- Menu Tenders -->
-		<menuitem name="Tender list" id="tender_cat_menu_tender_list" parent="tender_cat_menu_tenders"
-				  action="tender_cat_tender_action"/>
-		<menuitem name="Texts" id="tender_cat_menu_file_texts" parent="tender_cat_menu_tenders"
-				  action="tender_cat_file_texts_action"/>
+		<menuitem name="Tenders" id="tender_cat_menu_tender_list" parent="tender_cat_menu_tender"
+				  action="tender_cat_tender_action" sequence="100"/>
+
+		<menuitem name="Tender groups" id="tender_cat_menu_tender_groups" parent="tender_cat_menu_tender"
+				  action="tender_cat_tender_groups_action" sequence="200"/>
+
+		<menuitem name="Procuring entities" id="tender_cat_menu_customer" parent="tender_cat_menu_tender"
+				  action="base.action_partner_form" sequence="400"/>
+
+
+		<!-- Menu Documents -->
+
+		<menuitem name="Tender proposals" id="tender_cat_menu_tender_proposal" parent="tender_cat_menu_documents"
+				  action="tender_cat_tender_proposal_action" sequence="10"/>
+
+		<menuitem name="Proposal templates" id="tender_cat_menu_proposal_template" parent="tender_cat_menu_documents"
+				  action="tender_cat_proposal_template_action" sequence="50"/>
+
+		<menuitem name="Documents" id="tender_cat_menu_tender_document" parent="tender_cat_menu_documents"
+				  action="tender_cat_tender_document_action" sequence="100"/>
+
+
 
 		<!-- Menu Config -->
-		<menuitem name="Labels" id="tender_cat_menu_labels" parent="tender_cat_menu_config" sequence="10"
-				  action="tender_cat_labels_action"/>
 
 		<menuitem name="General settings" id="menu_tender_cat_settings_general" parent="tender_cat_menu_config"
 				  action="action_tender_cat_settings_general" sequence="100"/>
 
-		<menuitem id="tender_cat_menu_data_sub_menu" name="Data analysis" parent="tender_cat_menu_config" sequence="200"/>
+		<!-- Submenu Tenders -->
+		<menuitem id="tender_cat_menu_tender_sub_menu" name="Tenders" parent="tender_cat_menu_config" sequence="200"/>
+
+
+		<menuitem name="Document types" id="tender_cat_menu_tender_document_types" parent="tender_cat_menu_tender_sub_menu"
+				  action="tender_cat_tender_document_types_action" sequence="300"/>
+
+		<menuitem name="Companies" id="tender_cat_menu_companies" parent="tender_cat_menu_tender_sub_menu"
+				  action="action_tender_cat_companies" sequence="400"/>
+
+
+		<!-- Data analysis -->
+		<menuitem id="tender_cat_menu_data_sub_menu" name="Data analysis" parent="tender_cat_menu_config" sequence="500"/>
+
+
+		<menuitem name="Labels" id="tender_cat_menu_labels" parent="tender_cat_menu_data_sub_menu" sequence="600"
+				  action="tender_cat_labels_action"/>
 
 		<menuitem name="Data models" id="tender_cat_menu_data_models" parent="tender_cat_menu_data_sub_menu"
-				  action="tender_cat_data_models_action" sequence="300"/>
+				  action="tender_cat_data_models_action" sequence="700"/>
 
 		<menuitem name="Data models activities" id="tender_cat_data_model_activity" parent="tender_cat_menu_data_sub_menu"
-				  action="action_tender_cat_data_model_activity" sequence="400"/>
+				  action="action_tender_cat_data_model_activity" sequence="800"/>
+
+		<menuitem name="Texts" id="tender_cat_menu_texts" parent="tender_cat_menu_data_sub_menu"
+				  action="tender_cat_file_texts_action" sequence="900"/>
 
 		<!-- Not used at the moment
 		<menuitem name="Data change registration" id="tender_cat_menu_change_register" parent="tender_cat_menu_data_sub_menu"

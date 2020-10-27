@@ -28,9 +28,12 @@ class Tender(models.Model):
     tender_id = fields.Char(string='Tender ID', copy=False, track_visibility='onchange',
                             help='The tender identifier to refer tender to in “paper” documentation.')
 
-    procuring_entity = fields.Many2one(
-        'res.partner', string='Buyer', help='Organization conducting the tender',
+    procuring_entity_id = fields.Many2one(
+        'res.partner', string='Procuring entity', help='Organization conducting the tender',
         required=False, change_default=True, index=True, track_visibility='onchange')
+
+    tender_group_id = fields.Many2one('tender_cat.tender.group', string='Group', index=True)
+    note = fields.Text(string='Note')
 
     auction_url = fields.Char(string='A URL for view auction')
     date = fields.Date(string='Date')
@@ -394,3 +397,4 @@ class TenderFile(models.Model):
                                 string='Assigned to',
                                 index=True)
     req_docs_score = fields.Integer()
+

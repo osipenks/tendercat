@@ -1,0 +1,24 @@
+<odoo>
+  <data>
+      <!-- Tender group tree view -->
+      <record id="view_tender_group_tree" model="ir.ui.view" >
+            <field name="name">tender_cat.tender.group.tree</field>
+            <field name="model">tender_cat.tender.group</field>
+            <field eval="1" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Tender groups" >
+                    <field name="name"  string="Name"/>
+					<field name="description"  string="Description"/>
+                </tree>
+            </field>
+      </record>
+
+      <record id="act_tender_groups" model="ir.actions.act_window">
+            <field name="name">Tender groups</field>
+            <field name="res_model">tender_cat.tender.group</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+  </data>
+</odoo>

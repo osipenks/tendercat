@@ -16,6 +16,7 @@ class FileChunk(models.Model):
 
     user_label_ids = fields.Many2many('tender_cat.label', string='Labels', index=True)
     user_edited_label = fields.Boolean(default=False)
+    edited_by_id = fields.Many2one('res.users', string='Edited by', index=True)
 
     chunk_id = fields.Integer(string='Chunk ID', index=True, group_operator='count')
     name = fields.Char(string='Chunk name')
@@ -23,10 +24,6 @@ class FileChunk(models.Model):
 
     is_req_doc = fields.Boolean(string='It\'s a required document')
     is_doc_context = fields.Boolean(string='It\'s a document\'s context', index=True)
-
-    req_doc_score = fields.Float(default=0, string='Req doc score', digits=(18, 16), group_operator='avg')
-
-    is_qualification = fields.Boolean(string='It\'s a qualification')
 
     _order = 'tender_file_id asc, chunk_id asc'
     _log_access = False
@@ -38,7 +35,7 @@ class FileChunk(models.Model):
         tender = self.env['tender_cat.tender'].browse(self.tender_id.id)
         if tender:
             tender.mark_contexts(self._origin.id)
-        self.write({'user_edited_label': 1})
+        self.write({'user_edited_label': 1, 'edited_by_id': self.env.user.id})
 
     def write(self, vals):
         # If user changes label, register chunk for dumping

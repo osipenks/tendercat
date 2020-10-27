@@ -44,7 +44,8 @@
                     <group>
                         <group>
                             <field name="auction_url" string="Link" widget ="url"/>
-                            <field name="procuring_entity" string="Buyer"/>
+                            <field name="procuring_entity_id" string="Procuring entity"/>
+							<field name="tender_group_id" string="Group"/>
                         </group>
                         <group>
                             <label for="value" />
@@ -55,6 +56,9 @@
                             <field name="tender_period_end" />
                         </group>
                     </group>
+					<group>
+						<field name="note" string="Note"/>
+					</group>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers" help="Follow this tender to automatically track the events associated to it" groups="base.group_user"/>
@@ -70,16 +74,18 @@
             <field name="model">tender_cat.tender</field>
             <field eval="1" name="priority"/>
             <field name="arch" type="xml">
-                <tree string="Tenders" >
+                <tree string="Tenders" class="tender_tree">
                     <field name="date_created" optional="hide" />
                     <field name="tender_id" optional="show"/>
-                    <field name="full_name"  string="Name"/>
+                    <field name="full_name"  string="Name" width="50"/>
                     <field name="value" optional="show"/>
                     <field name="tender_period_start" optional="show"/>
                     <field name="tender_period_end" optional="show"/>
+					<field name="note" string="Note" optional="hide"/>
                     <field name="user_id" invisible="context.get('user_invisible', False)" optional="show"/>
                     <field name="doc_count" optional="hide"/>
                     <field name="file_count" optional="hide"/>
+					<field name="tender_group_id" optional="hide"/>
 					<field name="is_training_example" optional="hide"/>
                 </tree>
             </field>
@@ -94,9 +100,18 @@
                     <field name="name" string="Name"/>
                     <field name="description" string="Description"/>
                     <field name="tender_id" string="Tender ID"/>
-                    <field name="value" string="Value"/>
-                    <field name="procuring_entity" string="Buyer"/>
+                    <field name="note" string="Note"/>
+					<field name="value" string="Value"/>
+                    <field name="procuring_entity_id" string="Procuring entity"/>
+
+					<group expand="0" string="Group By">
+						<filter string="Tender group" name="tender_group" context="{'group_by': 'tender_group_id'}"/>
+						<filter string="Procuring entity" name="procuring_entity" context="{'group_by': 'procuring_entity_id'}"/>
+					</group>
+
                 </search>
+
+
             </field>
       </record>
 
