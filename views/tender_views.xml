@@ -78,7 +78,7 @@
                     <field name="user_id" invisible="context.get('user_invisible', False)" optional="show"/>
                     <field name="doc_count" optional="hide"/>
                     <field name="file_count" optional="hide"/>
-					<field name="tender_group_id" optional="hide"/>
+					<field name="tender_group_id" optional="show"/>
 					<field name="is_training_example" optional="hide"/>
                 </tree>
             </field>
