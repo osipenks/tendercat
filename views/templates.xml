@@ -1,9 +1,12 @@
 <odoo>
     <data>
-         <template id="tender_cat_css" name="tender_cat.css" inherit_id="web.assets_backend">
-         <xpath expr="." position="inside">
-             <link href="/tender_cat/static/src/css/tender_cat.css" rel="stylesheet" type="text/css"/>
-         </xpath>
-        </template>
+		<template id="assets_backend" name="tendercat assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/tender_cat/static/src/css/tendercat.css"/>
+            <link rel="stylesheet" type="text/scss" href="/tender_cat/static/src/css/tendercat_section_and_note.scss"/>
+            <script type="text/javascript" src="/tender_cat/static/src/js/section_and_note_fields_backend.js"/>
+        </xpath>
+    </template>
+
     </data>
 </odoo>

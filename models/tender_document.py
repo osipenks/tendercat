@@ -21,6 +21,11 @@ class TenderDocument(models.Model):
                                      ('code', 'Python code'),
                                      ], string='Content', required=True, default='file')
 
+    file_content = fields.Binary('PDF')
+
+    doc_date = fields.Date(string='Date', default=fields.Date.today())
+
+
 
 
 

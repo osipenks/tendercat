@@ -273,6 +273,9 @@ class Tender(models.Model):
 
         # Delete files
 
+    def create_tender_proposal(self):
+        pass
+
     def make_assessment(self):
 
         # todo: check if we need 1 and 2, if files not changed since last conversion

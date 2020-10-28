@@ -152,5 +152,8 @@
 				  action="tender_cat_change_register_action" sequence="500"/>
 		-->
 
+
+
+
 	</data>
 </odoo>

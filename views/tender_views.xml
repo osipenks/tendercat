@@ -9,6 +9,7 @@
                     <header>
                         <button name="reload_tender_data" string="Reload from Prozorro" type="object" class="oe_read_only"/>
                         <button name="make_assessment" string="Assessment" type="object" class="oe_read_only"/>
+						<button name="create_tender_proposal" string="Create proposal" type="object" class="oe_read_only"/>
                     </header>
                 <sheet string="Tender">
 
@@ -18,20 +19,12 @@
                         <button  class="oe_stat_button" name="texts_tree_view" type="object" icon="fa-file-text-o">
                             <field string="Documents list" name="doc_count" widget="statinfo"/>
                         </button>
-                        <!--
-                        <button class="oe_stat_button" name="qualification_documents" type="object" icon="fa-tasks">
-                            <field string="Qualifications" name="req_count" widget="statinfo"/>
-                        </button>
-                        -->
                         <button class="oe_stat_button" name="file_tree_view" type="object" icon="fa-database" style = "margin-right: 2em; ">
                             <field string="Files" name="file_count" widget="statinfo"/>
                         </button>
 
-						<!--
-						<button class="oe_stat_button" string="Training example" name="set_is_training_example" type="object"
-								style = "margin-right: 3%; " icon="fa-bullseye">
-                        </button>
-                        -->
+
+
 
                     </div>
 

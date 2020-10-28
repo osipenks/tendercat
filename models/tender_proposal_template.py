@@ -39,10 +39,8 @@ class TenderProposalTemplateLine(models.Model):
     @api.depends('sequence', 'proposal_template_id')
     def _compute_get_number(self):
         for template in self.mapped('proposal_template_id'):
-            _logger.info('template {}'.format(template))
             number = 1
             template_lines = self.env['tender_cat.tender.proposal.template'].browse(template.id).line_ids.sorted('sequence')
             for line in template_lines:
-                _logger.info('line {}'.format(line))
                 line.line_number = number
                 number += 1

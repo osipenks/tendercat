@@ -37,7 +37,6 @@
         'views/views.xml',
     ],
 
-    'css': ['static/src/css/tender_cat.css'],
-
+    # 'css': ['static/src/css/tendercat_section_and_note.scss'],
 
 }

@@ -12,3 +12,4 @@ access_tender_cat_tender_document,tender_cat.tender.document,model_tender_cat_te
 access_tender_cat_tender_proposal,tender_cat.tender.proposal,model_tender_cat_tender_proposal,base.group_user,1,1,1,1
 access_tender_cat_tender_proposal_template,tender_cat.tender.proposal.template,model_tender_cat_tender_proposal_template,base.group_user,1,1,1,1
 access_tender_cat_tender_proposal_template_line,tender_cat.tender.proposal.template.line,model_tender_cat_tender_proposal_template_line,base.group_user,1,1,1,1
+access_tender_cat_tender_proposal_doc_line,tender_cat.tender.proposal.doc.line,model_tender_cat_tender_proposal_doc_line,base.group_user,1,1,1,1
