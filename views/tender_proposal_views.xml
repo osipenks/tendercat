@@ -7,6 +7,7 @@
 			<field name="model">tender_cat.tender.proposal</field>
 			<field name="arch" type="xml">
 				<tree string="Tender proposal">
+					<field name="doc_date" string="Date" optional="show"/>
 					<field name="name" string="Name" optional="show"/>
 					<field name="description" string="Description" optional="show"/>
 					<field name="tender_id" string="Tender" optional="show"/>
