@@ -22,10 +22,6 @@
                         <button class="oe_stat_button" name="file_tree_view" type="object" icon="fa-database" style = "margin-right: 2em; ">
                             <field string="Files" name="file_count" widget="statinfo"/>
                         </button>
-
-
-
-
                     </div>
 
                     <field name="tender_id" string="Tender ID" placeholder="Enter tender identifier..."/>
@@ -74,7 +70,7 @@
                     <field name="value" optional="show"/>
                     <field name="tender_period_start" optional="show"/>
                     <field name="tender_period_end" optional="show"/>
-					<field name="note" string="Note" optional="hide"/>
+					<field name="note" string="Note" optional="show"/>
                     <field name="user_id" invisible="context.get('user_invisible', False)" optional="show"/>
                     <field name="doc_count" optional="hide"/>
                     <field name="file_count" optional="hide"/>

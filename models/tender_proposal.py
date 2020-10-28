@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields, api, exceptions, _
 import logging
 
 
@@ -34,6 +34,22 @@ class TenderProposal(models.Model):
         })
         doc_lines.append(val)
         self.update({'doc_line_ids': doc_lines})
+
+    def action_download_zip(self):
+        # action = self.env.ref('tender_cat.tender_cat_data_models_action')
+        # msg = _(
+        #     "Fine, dude")
+        # raise exceptions.RedirectWarning(msg, action.id, _("Go to the configuration panel"))
+        # self.env.user.notify_default(message=_("Looks great, dude!"),
+        #                              title='Download .zip',
+        #                              sticky=False)
+
+        raise exceptions.UserError("Everything Ok, downloaded!")
+
+        # return {'warning': {
+        #     'title': _("Download .zip"),
+        #     'message': _("Everything Ok, downloaded!")
+        # }}
 
 
 class TenderProposalDocLine(models.Model):

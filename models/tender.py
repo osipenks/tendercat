@@ -25,7 +25,7 @@ class Tender(models.Model):
     value = fields.Float(string='Total budget')
     description = fields.Text(string='Detailed description')
 
-    tender_id = fields.Char(string='Tender ID', copy=False, track_visibility='onchange',
+    tender_id = fields.Char(string='Tender ID', track_visibility='onchange',
                             help='The tender identifier to refer tender to in “paper” documentation.')
 
     procuring_entity_id = fields.Many2one(
@@ -255,12 +255,11 @@ class Tender(models.Model):
                     if is_req_doc and label_id:
                         labels_ids = labels.search([('id', '=', label_id)]).ids
                         chunk.write({
-                            'req_doc_score': score_val,
                             'is_req_doc': is_req_doc,
                             'user_label_ids': [(4, labels_ids[0])]
                         })
                     else:
-                        chunk.write({'req_doc_score': score_val, 'is_req_doc': is_req_doc, })
+                        chunk.write({'is_req_doc': is_req_doc, })
 
     def mark_required_docs(self):
         """
@@ -274,7 +273,10 @@ class Tender(models.Model):
         # Delete files
 
     def create_tender_proposal(self):
-        pass
+        """
+        Call wizard to create proposal
+        """
+        return self.env['tender_cat.create.proposal.wizard'].with_context(active_id=self.id).action_create_proposal()
 
     def make_assessment(self):
 

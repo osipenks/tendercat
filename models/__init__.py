@@ -16,3 +16,4 @@ from . import tender_document_type
 from . import tender_document
 from . import tender_proposal
 from . import tender_proposal_template
+from . import wizard_create_proposal

@@ -169,7 +169,6 @@ class DataModel(models.Model):
                         is_req_doc = True
                         labels_ids = labels.search([('id', '=', label_id)]).ids
                         chunk.write({
-                            'req_doc_score': score_val,
                             'is_req_doc': is_req_doc,
                             'user_label_ids': [(4, labels_ids[0])]
                         })
@@ -177,7 +176,7 @@ class DataModel(models.Model):
                     else:
                         if chunk.user_label_ids:
                             is_req_doc = True
-                        chunk.write({'req_doc_score': score_val, 'is_req_doc': is_req_doc, })
+                        chunk.write({'is_req_doc': is_req_doc, })
 
                 a.log('Labels {}, loaded {} texts from {}'.format(cnt_labeled, cnt_loaded, model_output))
 

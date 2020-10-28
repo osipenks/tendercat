@@ -34,9 +34,8 @@
         'views/templates.xml',
         'wizard/wizard_data_dump_views.xml',
         'wizard/wizard_remove_labels_views.xml',
+        'wizard/wizard_create_proposal_view.xml',
         'views/views.xml',
     ],
-
-    # 'css': ['static/src/css/tendercat_section_and_note.scss'],
 
 }

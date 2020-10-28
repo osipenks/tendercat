@@ -23,6 +23,9 @@
 			<field name="model">tender_cat.tender.proposal</field>
 			<field name="arch" type="xml">
 				<form string="Tender proposal">
+					<header>
+                        <button name="action_download_zip" string="Download .zip" type="object" class="oe_read_only"/>
+                    </header>
 					<sheet>
 						<div class="oe_title">
 							<h3>
