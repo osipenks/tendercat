@@ -49,6 +49,23 @@ class CreateProposalWizard(models.TransientModel):
             'type': 'ir.actions.act_window',
         }
 
+    def _prepare_default_proposal(self):
+        return {
+            'tender_id': self.tender_id.id,
+            'name': _('Тендерна пропозиція для {}'.format(self.tender_id.tender_id)),
+            'description': self.tender_id.full_name,
+        }
+
     def create_proposal(self):
-        pass
+        default_values = self._prepare_default_proposal()
+        new_proposal = self.env['tender_cat.tender.proposal'].create(default_values)
+        return {
+            'name': _('Create proposal'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'tender_cat.tender.proposal',
+            'view_mode': 'form',
+            'res_id': new_proposal.id,
+        }
+
+
 

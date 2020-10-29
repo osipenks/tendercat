@@ -1,22 +1,20 @@
 <odoo>
 	<data>
-
 		<!-- Tender proposal tree view -->
 		<record id="view_tender_proposal_tree" model="ir.ui.view">
 			<field name="name">tender_cat.tender.proposal.tree</field>
 			<field name="model">tender_cat.tender.proposal</field>
 			<field name="arch" type="xml">
-				<tree string="Tender proposal">
+				<tree string="Tender proposal" class="tender_proposal_tree">
 					<field name="doc_date" string="Date" optional="show"/>
-					<field name="name" string="Name" optional="show"/>
-					<field name="description" string="Description" optional="show"/>
+					<field name="name" string="Name" />
+					<field name="description" string="Description" />
 					<field name="tender_id" string="Tender" optional="show"/>
 					<field name="company_id" string="Company" optional="show"/>
 					<field name="user_id" string="Manager" optional="show"/>
 				</tree>
 			</field>
 		</record>
-
 		<!-- Tender proposal form view -->
 		<record id="view_tender_proposal_form" model="ir.ui.view">
 			<field name="name">tender_cat.tender.proposal.form</field>
@@ -32,6 +30,7 @@
 								<field name="name"/>
 							</h3>
 						</div>
+						<field name="description" nolabel="1" string="Description" placeholder="Description"/>
 						<group>
 							<group>
 								<field name="doc_date" string="Date"/>
@@ -42,16 +41,9 @@
 								<field name="user_id" string="Manager"/>
 							</group>
 						</group>
-						<group>
-							<field name="description" string="Description" placeholder="Description"/>
-						</group>
-
 						<notebook>
 							<page string="Documents">
-								<field name="doc_line_ids"
-									   widget="section_and_note_one2many"
-									   context="{'default_proposal_id': id}"
-								>
+								<field name="doc_line_ids" widget="section_and_note_one2many" context="{'default_proposal_id': id}">
 									<tree string="Documents" editable="bottom" class="tender_proposal_lines_tree">
 										<control>
 											<create name="add_doc_control" string="Add a document"/>
@@ -68,8 +60,7 @@
 											   attrs="{'required': [('display_type', '=', False)],}"
 											   options="{'no_open': True}"
 											   force_save="1"/>
-										<field name="name" widget="section_and_note_text"
-										attrs="{'required': [('display_type', '!=', False)],}"/>
+										<field name="name" widget="section_and_note_text" attrs="{'required': [('display_type', '!=', False)],}"/>
 									</tree>
 								</field>
 							</page>
@@ -83,7 +74,6 @@
 			</field>
 		</record>
 
-
 		<!-- Tender proposal search view -->
 		<record id="view_tender_proposal_search" model="ir.ui.view">
 			<field name="name">tender_cat.tender.proposal.search</field>
@@ -93,17 +83,13 @@
 					<field name="name" string="Name"/>
 					<field name="description" string="Description"/>
 					<field name="tender_id" string="Tender"/>
-
 					<group expand="0" string="Group By">
 						<filter string="Company" name="company" context="{'group_by': 'company_id'}"/>
 						<filter string="Tender" name="tender" context="{'group_by': 'tender_id'}"/>
 						<filter string="Manager" name="user" context="{'group_by': 'user_id'}"/>
 						<filter string="Document date" name="doc_date" context="{'group_by': 'doc_date:month'}"/>
 					</group>
-
 				</search>
-
-
 			</field>
 		</record>
 	</data>

@@ -41,7 +41,6 @@
     width: 20%;
 }
 
-
 .tender_proposal_template_lines_tree th[data-name="line_number"] {
     width: 2em;
 }
@@ -59,6 +58,9 @@
    white-space: nowrap;
 }
 
+.tender_proposal_tree.o_list_view .o_list_table tbody > tr > td:not(.o_list_record_selector).o_list_text {
+    white-space: nowrap;
+}
 
 .o_field_widget.o_field_pdfviewer {
     height: 640px;

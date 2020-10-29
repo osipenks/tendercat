@@ -22,9 +22,7 @@ class TenderProposal(models.Model):
 
     user_id = fields.Many2one('res.users', string='Assigned to', default=lambda self: self.env.uid, index=True, tracking=True)
 
-    doc_line_ids = fields.One2many(
-        'tender_cat.tender.proposal.doc.line', 'proposal_id', string='Documents',
-        copy=True)
+    doc_line_ids = fields.One2many('tender_cat.tender.proposal.doc.line', 'proposal_id', string='Documents', copy=True)
 
     def add_section_control(self):
         doc_lines = []

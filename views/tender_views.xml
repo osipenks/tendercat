@@ -16,8 +16,14 @@
 					<field name="is_training_example" invisible="1"/>
 					<widget name="web_ribbon" text="Example" attrs="{'invisible': [('is_training_example','=',False)]}"/>
 					<div class="oe_button_box" name="button_box" groups="base.group_user">
-                        <button  class="oe_stat_button" name="texts_tree_view" type="object" icon="fa-file-text-o">
-                            <field string="Documents list" name="doc_count" widget="statinfo"/>
+
+
+						<button  class="oe_stat_button" name="tender_proposals" type="object" icon="fa-file-text-o">
+                            <field string="Proposals" name="proposal_stats" widget="statinfo"/>
+                        </button>
+
+						<button  class="oe_stat_button" name="texts_tree_view" type="object" icon="fa-check-square-o">
+                            <field string="Requirements" name="doc_count" widget="statinfo"/>
                         </button>
                         <button class="oe_stat_button" name="file_tree_view" type="object" icon="fa-database" style = "margin-right: 2em; ">
                             <field string="Files" name="file_count" widget="statinfo"/>

@@ -41,8 +41,8 @@ class Tender(models.Model):
     tender_period_start = fields.Date(string='Begins', default=fields.Date.today())
     tender_period_end = fields.Date(string='Ends')
 
-    doc_count = fields.Integer(compute='_compute_req_documents_count',
-                               string="Number of required documents")
+    doc_count = fields.Integer(compute='_compute_req_documents_count', string="Number of required documents")
+    proposal_stats = fields.Integer(compute='_compute_proposal_stat', string="Proposals")
     req_count = fields.Integer()
     file_count = fields.Integer(compute='_compute_attached_file_count', string="Number of files attached")
 
@@ -65,6 +65,10 @@ class Tender(models.Model):
                 '&',
                 ('res_model', '=', 'tender_cat.tender'), ('res_id', '=', tender.id)
             ])
+
+    def _compute_proposal_stat(self):
+        for tender in self:
+            tender.proposal_stats = 1
 
     def _compute_req_documents_count(self):
         query = """SELECT COUNT(DISTINCT sel.label_id) AS count
@@ -113,8 +117,17 @@ class Tender(models.Model):
         action['context'] = "{'default_res_model': '%s','default_res_id': %d}" % (self._name, self.id)
         return action
 
-    def texts_tree_view(self):
+    def tender_proposals(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'tender_cat.tender.proposal',
+            'name': "Tender proposals",
+            'view_mode': 'tree,form',
+            'target': 'current',
+            'context': {'search_default_tender_id': self.id, },
+        }
 
+    def texts_tree_view(self):
         return {
             'type': 'ir.actions.act_window',
             'res_model': 'tender_cat.file_chunk',
