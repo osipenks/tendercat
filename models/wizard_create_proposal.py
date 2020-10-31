@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
-from . import data_dump
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -49,16 +48,74 @@ class CreateProposalWizard(models.TransientModel):
             'type': 'ir.actions.act_window',
         }
 
-    def _prepare_default_proposal(self):
-        return {
-            'tender_id': self.tender_id.id,
-            'name': _('Тендерна пропозиція для {}'.format(self.tender_id.tender_id)),
-            'description': self.tender_id.full_name,
-        }
-
     def create_proposal(self):
-        default_values = self._prepare_default_proposal()
-        new_proposal = self.env['tender_cat.tender.proposal'].create(default_values)
+
+        new_proposal = self.env['tender_cat.tender.proposal'].create({
+            'tender_id': self.tender_id.id,
+            'name': _('Пропозиція для {}'.format(self.tender_id.tender_id)),
+            'description': self.tender_id.full_name,
+        })
+
+        templ_label_docs = {}
+
+        templ_lines = self.env['tender_cat.tender.proposal.template.line'].search([
+            ('proposal_template_id', '=', self.proposal_template_id.id),
+        ])
+
+        def add_doc_line(lines_dct, lab_id, line_number, document_id):
+            if lab_id in lines_dct:
+                lines_dct[lab_id]['order'] = min(templ_label_docs[lab_id]['order'], line_number)
+                lines_dct[lab_id]['docs'].append(document_id)
+            else:
+                templ_label_docs[lab_id] = {'order': line_number, 'docs': [document_id]}
+
+        # Labels and documents from proposal template
+        for line in templ_lines:
+            line_num = int(line.line_number)
+            if line.label_ids:
+                for label in line.label_ids:
+                    add_doc_line(templ_label_docs, label.name, line_num, line.document_id.id)
+            else:
+                empty = ''
+                add_doc_line(templ_label_docs, empty, line_num, line.document_id.id)
+
+        # Labels from tender texts
+        tender_labels = self.tender_id.get_text_labels()
+        tender_label_names = [label['name'] for label in tender_labels]
+
+        for label, vals in sorted(templ_label_docs.items(), key=lambda x: x[1]['order']):
+            if label and label in tender_label_names:
+                # Label from tender text, create section
+                self.env['tender_cat.tender.proposal.doc.line'].create({
+                    'proposal_id': new_proposal.id,
+                    'name': label,
+                    'display_type': 'line_section',
+                })
+
+            for doc_id in vals['docs']:
+                new_line = self.env['tender_cat.tender.proposal.doc.line'].create({
+                    'proposal_id': new_proposal.id,
+                    'name': '',
+                    'document_id': doc_id,
+                })
+                new_line.document_id_change()
+
+        # Add labels that found in tender text and not exist in proposal template
+        proposal_templ_labels = [key for key in templ_label_docs]
+        for label in tender_label_names:
+            if label not in proposal_templ_labels:
+                # Add section and empty document string
+                self.env['tender_cat.tender.proposal.doc.line'].create({
+                    'proposal_id': new_proposal.id,
+                    'name': label,
+                    'display_type': 'line_section',
+                })
+
+                self.env['tender_cat.tender.proposal.doc.line'].create({
+                    'proposal_id': new_proposal.id,
+                    'name': _('Add documents to this section'),
+                })
+
         return {
             'name': _('Create proposal'),
             'type': 'ir.actions.act_window',
@@ -66,6 +123,3 @@ class CreateProposalWizard(models.TransientModel):
             'view_mode': 'form',
             'res_id': new_proposal.id,
         }
-
-
-

@@ -43,7 +43,7 @@
 						</group>
 						<notebook>
 							<page string="Documents">
-								<field name="doc_line_ids" widget="section_and_note_one2many" context="{'default_proposal_id': id}">
+								<field name="doc_line_ids" widget="section_and_note_one2many" context="{'default_proposal_id': id}" limit="255">
 									<tree string="Documents" editable="bottom" class="tender_proposal_lines_tree">
 										<control>
 											<create name="add_doc_control" string="Add a document"/>
@@ -56,10 +56,7 @@
 										<field name="proposal_id" invisible="1"/>
 										<field name="sequence" widget="handle"/>
 										<field name="line_number" string="Nr" readonly="1"/>
-										<field name="document_id"
-											   attrs="{'required': [('display_type', '=', False)],}"
-											   options="{'no_open': True}"
-											   force_save="1"/>
+										<field name="document_id" options="{'no_open': True}" force_save="1"/>
 										<field name="name" widget="section_and_note_text" attrs="{'required': [('display_type', '!=', False)],}"/>
 									</tree>
 								</field>

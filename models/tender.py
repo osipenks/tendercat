@@ -67,8 +67,38 @@ class Tender(models.Model):
             ])
 
     def _compute_proposal_stat(self):
+        query = """
+                    SELECT
+                        COUNT(DISTINCT tender_cat_tender_proposal.id) AS count
+                        FROM tender_cat_tender_proposal
+                        WHERE   tender_cat_tender_proposal.tender_id = %s
+                        """
         for tender in self:
-            tender.proposal_stats = 1
+            self.env.cr.execute(query, (tender.id, ))
+            res = self.env.cr.dictfetchone()
+            if res:
+                tender.proposal_stats = res['count']
+
+    def get_text_labels(self):
+        query = """
+                SELECT DISTINCT
+                    chunk_labels.tender_cat_label_id AS id,
+                    labels.name AS name
+                    FROM tender_cat_file_chunk_tender_cat_label_rel AS chunk_labels
+                    LEFT JOIN tender_cat_file_chunk AS file_chunk
+                        ON file_chunk.id = chunk_labels.tender_cat_file_chunk_id
+                    LEFT JOIN tender_cat_label AS labels
+                        ON labels.id = chunk_labels.tender_cat_label_id
+                    WHERE   file_chunk.tender_id = %s
+                """
+
+        labels = []
+        for tender in self:
+            self.env.cr.execute(query, (tender.id,))
+            labels += self.env.cr.dictfetchall()
+
+        return labels
+
 
     def _compute_req_documents_count(self):
         query = """SELECT COUNT(DISTINCT sel.label_id) AS count

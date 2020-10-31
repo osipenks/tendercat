@@ -24,6 +24,8 @@ class TenderProposal(models.Model):
 
     doc_line_ids = fields.One2many('tender_cat.tender.proposal.doc.line', 'proposal_id', string='Documents', copy=True)
 
+    _order = 'doc_date desc'
+
     def add_section_control(self):
         doc_lines = []
         val = (0, 0, {
@@ -68,12 +70,6 @@ class TenderProposalDocLine(models.Model):
     display_type = fields.Selection([
         ('line_section', "Section"),
         ('line_note', "Note")], default=False, help="Technical field for UX purpose.")
-
-    _sql_constraints = [
-        ('tender_proposal_required_fields',
-         "CHECK(COALESCE(display_type IN ('line_section', 'line_note'), 'f') OR document_id IS NOT NULL)",
-         "Missing required fields on proposal doc line."),
-    ]
 
     @api.model_create_multi
     def create(self, vals_list):
