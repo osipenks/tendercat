@@ -1,0 +1,1609 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* tender_cat
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-01 16:19+0000\n"
+"PO-Revision-Date: 2020-11-01 18:29+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: uk_UA\n"
+"X-Generator: Poedit 2.4.1\n"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model___refit_make_sens
+msgid " Refit Make Sens"
+msgstr ""
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model___tuning_make_sens
+msgid " Tuning Make Sens"
+msgstr ""
+
+#. module: tender_cat
+#: code:addons/tender_cat/models/tender_doc_copy.py:0
+#, python-format
+msgid ", дата"
+msgstr ", дата"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.tender_cat_res_config_settings_view_form
+msgid "<span class=\"o_form_label\">Data models</span>"
+msgstr "<span class=\"o_form_label\">Моделі даних</span>"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.tender_cat_res_config_settings_view_form
+msgid "<span class=\"o_form_label\">Processing folder</span>"
+msgstr "<span class=\"o_form_label\">Папка для обробки</span>"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__auction_url
+msgid "A URL for view auction"
+msgstr "URL для перегляду тендера"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__access_token
+msgid "Access Token"
+msgstr "Token доступу"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__message_needaction
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__message_needaction
+msgid "Action Needed"
+msgstr "Потрібні дії"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_data_model_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_cat_data_model_activity_search
+msgid "Activities"
+msgstr "Активності"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model__activity_started
+msgid "Activity Started"
+msgstr "Початок активності"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_cat_data_model_activity_search
+msgid "Activity type"
+msgstr "Тип активності"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_form
+msgid "Add a document"
+msgstr "Добавити документ"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_form
+msgid "Add a note"
+msgstr "Добавити примітку"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_form
+msgid "Add a section"
+msgstr "Добавити розділ"
+
+#. module: tender_cat
+#: code:addons/tender_cat/models/wizard_create_proposal.py:0
+#, python-format
+msgid "Add documents to this section"
+msgstr "Добавьте документи в цей розділ"
+
+#. module: tender_cat
+#: model:ir.model.fields.selection,name:tender_cat.selection__tender_cat_data_dump_wizard__labels_kind__all
+msgid "All labeled data"
+msgstr "Всі розмічені дані"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_tender
+msgid "Assessment"
+msgstr "Аналіз"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__tender_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__user_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__user_id
+msgid "Assigned to"
+msgstr "Призначено на"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__message_attachment_count
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__message_attachment_count
+msgid "Attachment Count"
+msgstr "Кількість додатків"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__local_url
+msgid "Attachment URL"
+msgstr "URL додатку"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__tender_period_start
+msgid "Begins"
+msgstr "Початок"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_cat_create_proposal_wizard_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_cat_data_dump_wizard_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_cat_remove_labels_wizard_form
+msgid "Cancel"
+msgstr "Скасувати"
+
+#. module: tender_cat
+#: model:ir.actions.act_window,name:tender_cat.tender_cat_change_register_action
+msgid "Change registration"
+msgstr "Регістрація змін"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__checksum
+msgid "Checksum/SHA1"
+msgstr ""
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_cat_create_proposal_wizard_form
+msgid "Choose template for that tender"
+msgstr "Виберіть шаблон тендерної пропозиції"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_change_register__chunk_id
+msgid "Chunk"
+msgstr "Фрагмент"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file_chunk__chunk_id
+msgid "Chunk ID"
+msgstr "ID фрагменту"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file_chunk__name
+msgid "Chunk name"
+msgstr "Назва фрагменту"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_report_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_report_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_report_tree
+msgid "Class"
+msgstr "Клас"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_label_form
+msgid "Color"
+msgstr "Колір"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_change_register__color
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_label__color
+msgid "Color Index"
+msgstr "Індекс кольору"
+
+#. module: tender_cat
+#: model:ir.actions.act_window,name:tender_cat.action_tender_cat_companies
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_companies
+msgid "Companies"
+msgstr "Компанії"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__company_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document__company_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__company_id
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_tree
+msgid "Company"
+msgstr "Компанія"
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_res_config_settings
+msgid "Config Settings"
+msgstr "Налаштування"
+
+#. module: tender_cat
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_config
+msgid "Configuration"
+msgstr "Конфігурація"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document__content_type
+msgid "Content"
+msgstr "Вміст"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_tree
+msgid "Content type"
+msgstr "Тип вмісту"
+
+#. module: tender_cat
+#: model:ir.actions.act_window,name:tender_cat.tender_cat_tender_document_action
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_tender_document
+msgid "Copies of documents"
+msgstr "Копії документів"
+
+#. module: tender_cat
+#: code:addons/tender_cat/models/tender_proposal_template.py:0
+#: model:ir.model.fields.selection,name:tender_cat.selection__tender_cat_tender_proposal_template_line__doc_class__doc_copy
+#, python-format
+msgid "Copy of document"
+msgstr "Копія документу"
+
+#. module: tender_cat
+#: code:addons/tender_cat/models/wizard_create_proposal.py:0
+#: model:ir.actions.act_window,name:tender_cat.action_tender_cat_create_proposal_wizard
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_tender
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_cat_create_proposal_wizard_form
+#, python-format
+msgid "Create proposal"
+msgstr "Створити пропозицію"
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_tender_cat_create_proposal_wizard
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_cat_create_proposal_wizard_form
+msgid "Create proposal for tender"
+msgstr "Створити пропозицію для тендеру"
+
+#. module: tender_cat
+#: code:addons/tender_cat/models/wizard_create_proposal.py:0
+#, python-format
+msgid "Create tender proposal"
+msgstr "Створити тендерну пропозицію"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__date_created
+msgid "Created"
+msgstr "Створено"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_change_register__create_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_create_proposal_wizard__create_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_dump_wizard__create_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model__create_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__create_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_label__create_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_remove_labels_wizard__create_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__create_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_external__create_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_report__create_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_template__create_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document__create_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document_group__create_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_group__create_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__create_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_doc_line__create_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template__create_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template_line__create_uid
+msgid "Created by"
+msgstr "Створено"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_change_register__create_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_create_proposal_wizard__create_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_dump_wizard__create_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model__create_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__create_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_label__create_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_remove_labels_wizard__create_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__create_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_external__create_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_report__create_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_template__create_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document__create_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document_group__create_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_group__create_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__create_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_doc_line__create_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template__create_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template_line__create_date
+msgid "Created on"
+msgstr "Створено"
+
+#. module: tender_cat
+#: code:addons/tender_cat/models/tender_proposal_template.py:0
+#: model:ir.model.fields.selection,name:tender_cat.selection__tender_cat_tender_proposal_template_line__doc_class__doc_template
+#, python-format
+msgid "Custom template"
+msgstr "Шаблон"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_change_register__data_model_id
+msgid "Data Model"
+msgstr "Модель даних"
+
+#. module: tender_cat
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_data_sub_menu
+msgid "Data analysis"
+msgstr "Аналіз даних"
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_tender_cat_change_register
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_change_registration_tree
+msgid "Data change registration"
+msgstr ""
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_data_model_form
+msgid "Data dumps"
+msgstr "Дампи даних"
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_tender_cat_data_model
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_dump_wizard__data_model_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model_activity__data_model_id
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_change_registration_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_data_model_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_cat_data_model_activity_search
+msgid "Data model"
+msgstr "Модель даних"
+
+#. module: tender_cat
+#: model:ir.actions.act_window,name:tender_cat.action_tender_cat_data_model_activity
+msgid "Data model activities"
+msgstr "Активність моделей"
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_tender_cat_data_model_activity
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model__last_activity_id
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_data_model_activity_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_cat_data_model_activity_tree
+msgid "Data model activity"
+msgstr "Активність моделей"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_res_config_settings__req_docs_data_model
+#: model:ir.model.fields,help:tender_cat.field_res_config_settings__req_docs_data_model
+msgid "Data model to find documents required for tender"
+msgstr "Модель даних для пошуку необхідних на тендер документів"
+
+#. module: tender_cat
+#: model:ir.actions.act_window,name:tender_cat.tender_cat_data_models_action
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_data_models
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_data_model_tree
+msgid "Data models"
+msgstr "Моделі даних"
+
+#. module: tender_cat
+#: model:ir.ui.menu,name:tender_cat.tender_cat_data_model_activity
+msgid "Data models activities"
+msgstr "Активність моделей"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__db_datas
+msgid "Database Data"
+msgstr "База даних"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document__doc_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__doc_date
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_tree
+msgid "Date"
+msgstr "Дата"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.tender_cat_res_config_settings_view_form
+msgid "Define processing folder to store dumps, models and temporary data"
+msgstr "Визначте робочу папку для збереження дампів, моделей та тимчасових даних"
+
+#. module: tender_cat
+#: model:ir.model.fields,help:tender_cat.field_res_config_settings__processing_folder
+msgid "Defines the folder for processing files"
+msgstr "Визначте робочу папку для обробки файлів"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__description
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_doc_line__name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template_line__doc_desc
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_tender
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_data_model_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_data_model_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_external_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_external_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_external_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_report_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_report_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_report_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_template_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_template_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_template_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_group_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_template_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_template_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_search
+msgid "Description"
+msgstr "Опис"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model__description
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__description
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_external__description
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_report__description
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_template__description
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document__description
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document_group__description
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_group__description
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__description
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template__description
+msgid "Detailed description"
+msgstr "Детальний опис"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_change_register__display_name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_create_proposal_wizard__display_name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_dump_wizard__display_name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model__display_name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model_activity__display_name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__display_name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file_chunk__display_name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_label__display_name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_remove_labels_wizard__display_name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__display_name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_external__display_name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_report__display_name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_template__display_name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document__display_name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document_group__display_name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_group__display_name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__display_name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_doc_line__display_name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template__display_name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template_line__display_name
+msgid "Display Name"
+msgstr "Відображуване ім’я"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_doc_line__display_type
+msgid "Display Type"
+msgstr "Відображуваний тип"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_doc_line__document_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template_line__doc_copy_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template_line__doc_external_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template_line__doc_report_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template_line__doc_repr
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template_line__doc_template_id
+msgid "Document"
+msgstr "Документ"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template_line__doc_class
+msgid "Document class"
+msgstr "Клас документа"
+
+#. module: tender_cat
+#: code:addons/tender_cat/models/tender_doc_copy.py:0
+#: model:ir.model.fields.selection,name:tender_cat.selection__tender_cat_tender_document__doc_class__doc_copy
+#, python-format
+msgid "Document copy"
+msgstr "Копія доумента"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_search
+msgid "Document date"
+msgstr "Дата документа"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_external__document_group_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_report__document_group_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_template__document_group_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document__document_group_id
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_external_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_external_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_report_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_report_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_template_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_template_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_tree
+msgid "Document group"
+msgstr "Група документів"
+
+#. module: tender_cat
+#: model:ir.actions.act_window,name:tender_cat.tender_cat_tender_document_types_action
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_tender_document_types
+msgid "Document groups"
+msgstr "Групи документів"
+
+#. module: tender_cat
+#: code:addons/tender_cat/models/tender_doc_copy.py:0
+#: code:addons/tender_cat/models/tender_doc_template.py:0
+#: model:ir.model.fields.selection,name:tender_cat.selection__tender_cat_tender_document__doc_class__doc_template
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_template_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_template_search
+#, python-format
+msgid "Document template"
+msgstr "Шаблон документа"
+
+#. module: tender_cat
+#: model:ir.actions.act_window,name:tender_cat.tender_cat_template_docs_action
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_template_docs
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_template_tree
+msgid "Document templates"
+msgstr "Шаблони документів"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_search
+msgid "Document type"
+msgstr ""
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__doc_line_ids
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template__line_ids
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_documents_sub_menu
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_chunk_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_template_form
+msgid "Documents"
+msgstr "Документи"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_chunk_search
+msgid "Documents context"
+msgstr "Контекст документів"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_form
+msgid "Download .zip"
+msgstr "Скачати .zip"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_data_model_tree
+msgid "Dump Nr."
+msgstr "№ дампу"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_change_register__dump_number
+msgid "Dump Number"
+msgstr "№ дампу"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_data_model_form
+msgid "Dump data"
+msgstr "Дамп даних"
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_tender_cat_data_dump_wizard
+msgid "Dump data for data models"
+msgstr "Зробити дамп даних для моделі даних"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_dump_wizard__dump_folder
+msgid "Dump to folder"
+msgstr "Дамп у папку"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model_activity__duration
+msgid "Duration"
+msgstr "Тривалість"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file_chunk__edited_by_id
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_file_chunk
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_chunk_tree
+msgid "Edited by"
+msgstr "Редагував"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model_activity__end_time
+msgid "End"
+msgstr "Кінець"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__tender_period_end
+msgid "Ends"
+msgstr "Кінець"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_data_model_form
+msgid "Enter model name..."
+msgstr "Введіть назву моделі даних"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_tender
+msgid "Enter tender identifier..."
+msgstr "Введіть ідентифікатор тендера..."
+
+#. module: tender_cat
+#: model:ir.actions.server,name:tender_cat.tender_cat_tender_training_example_action
+msgid "Example for training"
+msgstr "Зразок для навчання"
+
+#. module: tender_cat
+#: code:addons/tender_cat/models/tender_doc_copy.py:0
+#: code:addons/tender_cat/models/tender_doc_external.py:0
+#: code:addons/tender_cat/models/tender_proposal_template.py:0
+#: model:ir.model.fields.selection,name:tender_cat.selection__tender_cat_tender_document__doc_class__doc_external
+#: model:ir.model.fields.selection,name:tender_cat.selection__tender_cat_tender_proposal_template_line__doc_class__doc_external
+#, python-format
+msgid "External document"
+msgstr "Зовнішній документ"
+
+#. module: tender_cat
+#: model:ir.actions.act_window,name:tender_cat.tender_cat_external_docs_action
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_external_docs
+msgid "External documents"
+msgstr "Зовнішні документи"
+
+#. module: tender_cat
+#: code:addons/tender_cat/models/tender_doc_copy.py:0
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_change_register__file_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file_chunk__tender_file_id
+#: model:ir.model.fields.selection,name:tender_cat.selection__tender_cat_tender_document__content_type__file
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_change_registration_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_chunk_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_chunk_tree
+#, python-format
+msgid "File"
+msgstr "Файл"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__datas
+msgid "File Content"
+msgstr "Вміст файлу"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__file_size
+msgid "File Size"
+msgstr "Розмір файлу"
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_tender_cat_file_chunk
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_file_chunk
+msgid "File chunk"
+msgstr "Фрагмент файлу"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_chunk_search
+msgid "File name"
+msgstr "Назва файлу"
+
+#. module: tender_cat
+#: model:ir.actions.act_window,name:tender_cat.tender_cat_file_texts_action
+msgid "File texts"
+msgstr "Тексти файлів"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_tender
+msgid "Files"
+msgstr "Файли"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_tender
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_form
+msgid "Follow this tender to automatically track the events associated to it"
+msgstr "Підпишіться на цей тендер, щоб автоматично відслідковувати події пов'язані з ним"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__message_follower_ids
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__message_follower_ids
+msgid "Followers"
+msgstr "Підписники"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__message_channel_ids
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Підписники (Канали)"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__message_partner_ids
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Підписники (Партнери)"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__full_name
+msgid "Full name"
+msgstr "Повне найменування"
+
+#. module: tender_cat
+#: model:ir.actions.act_window,name:tender_cat.action_tender_cat_settings_general
+#: model:ir.ui.menu,name:tender_cat.menu_tender_cat_settings_general
+msgid "General settings"
+msgstr "Загальні налаштування"
+
+#. module: tender_cat
+#: model:ir.model.fields,help:tender_cat.field_tender_cat_tender_proposal_template_line__sequence
+msgid "Gives the sequence order when displaying."
+msgstr "Визначає послідовність під час відображення"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__tender_group_id
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_tender
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_external_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_report_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_template_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_form
+msgid "Group"
+msgstr "Група"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_change_registration_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_chunk_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_cat_data_model_activity_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_external_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_report_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_template_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_search
+msgid "Group By"
+msgstr "Групувати за"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_template_form
+msgid "Here we can edit custom document templates"
+msgstr "Тут ми можемо редагувати шаблони документів замовника"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_external_form
+msgid ""
+"Here we can order a document from an external source, for example bank or "
+"local authority"
+msgstr "Тут ми можемо замовити документ ззовні, наприклад з банківського електроного сервісу"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_change_register__id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_create_proposal_wizard__id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_dump_wizard__id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model__id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model_activity__id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file_chunk__id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_label__id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_remove_labels_wizard__id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_external__id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_report__id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_template__id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document__id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document_group__id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_group__id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_doc_line__id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template__id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template_line__id
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_chunk_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_chunk_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_data_model_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_label_form
+msgid "ID"
+msgstr "Ід"
+
+#. module: tender_cat
+#: model:ir.model.fields,help:tender_cat.field_tender_cat_tender__message_needaction
+#: model:ir.model.fields,help:tender_cat.field_tender_cat_tender__message_unread
+#: model:ir.model.fields,help:tender_cat.field_tender_cat_tender_proposal__message_needaction
+#: model:ir.model.fields,help:tender_cat.field_tender_cat_tender_proposal__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "Якщо позначено, нові пвідомлення потребують вашої уваги"
+
+#. module: tender_cat
+#: model:ir.model.fields,help:tender_cat.field_tender_cat_tender__message_has_error
+#: model:ir.model.fields,help:tender_cat.field_tender_cat_tender_proposal__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__image_height
+msgid "Image Height"
+msgstr "Висота зображення"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__image_src
+msgid "Image Src"
+msgstr "Джерело зображення"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__image_width
+msgid "Image Width"
+msgstr "Ширина зображення"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__index_content
+msgid "Indexed Content"
+msgstr "Індексований вміст"
+
+#. module: tender_cat
+#: code:addons/tender_cat/models/tender_doc_report.py:0
+#: model:ir.model.fields.selection,name:tender_cat.selection__tender_cat_tender_doc_report__report_class__reportinfaboutcompany
+#, python-format
+msgid "Information about the company"
+msgstr "Інформація про компанію"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model_activity__is_async
+msgid "Is Async"
+msgstr "Є асинхронним"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__is_filled
+msgid "Is Filled"
+msgstr "Заповнений"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__message_is_follower
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__message_is_follower
+msgid "Is Follower"
+msgstr "Є підписником"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__is_training_example
+msgid "Is Training Example"
+msgstr "Зразок для навчання"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_file_chunk
+msgid "Is document requirement"
+msgstr "Є вимого к документам"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__public
+msgid "Is public document"
+msgstr ""
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file_chunk__is_doc_context
+msgid "It's a document's context"
+msgstr "Це контекст документів"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file_chunk__is_req_doc
+msgid "It's a required document"
+msgstr "Це необхідний документ"
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_tender_cat_label
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_change_register__label_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template_line__label_ids
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_label_form
+msgid "Label"
+msgstr "Позначка"
+
+#. module: tender_cat
+#: model:ir.model.constraint,message:tender_cat.constraint_tender_cat_label_name_uniq
+msgid "Label name already exists!"
+msgstr "Така назва позначки вже існує"
+
+#. module: tender_cat
+#: model:ir.actions.act_window,name:tender_cat.tender_cat_labels_action
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_dump_wizard__labels_kind
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file_chunk__user_label_ids
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_labels
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_data_model_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_label_tree
+msgid "Labels"
+msgstr "Позначки"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_change_register____last_update
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_create_proposal_wizard____last_update
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_dump_wizard____last_update
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model____last_update
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model_activity____last_update
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file____last_update
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file_chunk____last_update
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_label____last_update
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_remove_labels_wizard____last_update
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender____last_update
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_external____last_update
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_report____last_update
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_template____last_update
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document____last_update
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document_group____last_update
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_group____last_update
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal____last_update
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_doc_line____last_update
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template____last_update
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template_line____last_update
+msgid "Last Modified on"
+msgstr "Востаннє змінено"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_change_register__write_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_create_proposal_wizard__write_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_dump_wizard__write_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model__write_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__write_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_label__write_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_remove_labels_wizard__write_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__write_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_external__write_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_report__write_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_template__write_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document__write_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document_group__write_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_group__write_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__write_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_doc_line__write_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template__write_uid
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template_line__write_uid
+msgid "Last Updated by"
+msgstr "Востаннє оновив"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_change_register__write_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_create_proposal_wizard__write_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_dump_wizard__write_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model__write_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__write_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_label__write_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_remove_labels_wizard__write_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__write_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_external__write_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_report__write_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_template__write_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document__write_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document_group__write_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_group__write_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__write_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_doc_line__write_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template__write_date
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template_line__write_date
+msgid "Last Updated on"
+msgstr "Останнє оновлення"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model__dump_number
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_data_model_form
+msgid "Last dump number"
+msgstr "Номер останнього дампу"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_remove_labels_wizard__leave_user_edited_flag
+msgid "Leave 'User edited text' marks"
+msgstr "Залишити маркери 'Користувач редагував текст'"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_doc_line__line_number
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template_line__line_number
+msgid "Line Number"
+msgstr "Номер рядка"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_tender
+msgid "Link"
+msgstr "Посилання"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model_activity__activity_log
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_cat_data_model_activity_search
+msgid "Log"
+msgstr "Лог"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__message_main_attachment_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Головний додаток"
+
+#. module: tender_cat
+#: code:addons/tender_cat/models/wizard_data_dump.py:0
+#, python-format
+msgid "Make data dump"
+msgstr "Зробити дамп даних"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_cat_data_dump_wizard_form
+msgid "Make dump"
+msgstr "Зробити дамп"
+
+#. module: tender_cat
+#: model:ir.actions.act_window,name:tender_cat.action_tender_cat_data_dump_wizard
+#: model:ir.actions.act_window,name:tender_cat.action_tender_cat_make_dump_file_chunk
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_cat_data_dump_wizard_form
+msgid "Make dump for data model"
+msgstr "Зробити дамп для моделі даних"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_tree
+msgid "Manager"
+msgstr "Менеджер"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__message_has_error
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__message_has_error
+msgid "Message Delivery error"
+msgstr "Повідомлення Помилка доставки"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__message_ids
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__message_ids
+msgid "Messages"
+msgstr "Повідомлення"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__mimetype
+msgid "Mime Type"
+msgstr "MIME тип"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_data_model_form
+msgid "Model use data dumping"
+msgstr "Модель використовує дамп даних"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model__name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model_activity__name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_label__name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_external__name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_report__name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_template__name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document__name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document_group__name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_group__name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__name
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template__name
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_tender
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_data_model_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_label_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_external_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_external_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_report_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_report_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_template_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_template_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_group_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_template_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_tree
+msgid "Name"
+msgstr "Назва"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__note
+#: model:ir.model.fields.selection,name:tender_cat.selection__tender_cat_tender_proposal_doc_line__display_type__line_note
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_tender
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_tree
+msgid "Note"
+msgstr "Примітка"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_template_form
+msgid "Nr"
+msgstr "№"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__message_needaction_counter
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Кількість активностей"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__message_has_error_counter
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__message_has_error_counter
+msgid "Number of errors"
+msgstr "Кількість помилок"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__file_count
+msgid "Number of files attached"
+msgstr "Кількість вкладених файлів"
+
+#. module: tender_cat
+#: model:ir.model.fields,help:tender_cat.field_tender_cat_tender__message_needaction_counter
+#: model:ir.model.fields,help:tender_cat.field_tender_cat_tender_proposal__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Кількість повідомлень що потребують уваги"
+
+#. module: tender_cat
+#: model:ir.model.fields,help:tender_cat.field_tender_cat_tender__message_has_error_counter
+#: model:ir.model.fields,help:tender_cat.field_tender_cat_tender_proposal__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Кількість повідомлень з помилкою доставки"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model__activities_count
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__doc_count
+msgid "Number of required documents"
+msgstr "Кількість необхідних документів"
+
+#. module: tender_cat
+#: model:ir.model.fields,help:tender_cat.field_tender_cat_tender__message_unread_counter
+#: model:ir.model.fields,help:tender_cat.field_tender_cat_tender_proposal__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Кількість непрочитаних повідомлень"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model_activity__obj_id
+msgid "Obj"
+msgstr "Об"
+
+#. module: tender_cat
+#: model:ir.model.fields.selection,name:tender_cat.selection__tender_cat_data_dump_wizard__labels_kind__edited
+msgid "Only labeled by user"
+msgstr "Тільки розмічені користувачем"
+
+#. module: tender_cat
+#: model:ir.model.fields,help:tender_cat.field_tender_cat_tender__procuring_entity_id
+msgid "Organization conducting the tender"
+msgstr "Організація що проводить тендер"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document__file_content
+msgid "PDF"
+msgstr "PDF"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_data_model_form
+msgid "Parameters"
+msgstr "Параметри"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.tender_cat_res_config_settings_view_form
+msgid "Processing"
+msgstr "Обробка"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_res_config_settings__processing_folder
+msgid "Processing folder"
+msgstr "Папка для обробки"
+
+#. module: tender_cat
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_customer
+msgid "Procuring entities"
+msgstr "Замовники"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__procuring_entity_id
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_tender
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_search
+msgid "Procuring entity"
+msgstr "Замовник"
+
+#. module: tender_cat
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_documents
+msgid "Proposal"
+msgstr "Пропозиція"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_create_proposal_wizard__proposal_template_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template_line__proposal_template_id
+msgid "Proposal template"
+msgstr "Шаблон пропозиції"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_template_line_form
+msgid "Proposal template line"
+msgstr "Рядок шаблону пропозиції"
+
+#. module: tender_cat
+#: model:ir.actions.act_window,name:tender_cat.tender_cat_proposal_template_action
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_proposal_template
+msgid "Proposal templates"
+msgstr "Шаблони пропозицій"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__proposal_stats
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_tender
+msgid "Proposals"
+msgstr "Пропозиції"
+
+#. module: tender_cat
+#: code:addons/tender_cat/models/tender_doc_copy.py:0
+#: model:ir.model.fields.selection,name:tender_cat.selection__tender_cat_tender_document__content_type__code
+#, python-format
+msgid "Python code"
+msgstr "Код python"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_data_model_form
+msgid "Refit model"
+msgstr "Розрахувати модель"
+
+#. module: tender_cat
+#: code:addons/tender_cat/models/tender_doc_report.py:0
+#: model:ir.model.fields.selection,name:tender_cat.selection__tender_cat_tender_doc_report__report_class__reportdocregister
+#, python-format
+msgid "Register of documents"
+msgstr "Реєстр документів"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_tender
+msgid "Reload from Prozorro"
+msgstr "Перезавантажити з Prozorro"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_cat_remove_labels_wizard_form
+msgid "Remove labels"
+msgstr "Видалити позначки"
+
+#. module: tender_cat
+#: code:addons/tender_cat/models/wizard_remove_labels.py:0
+#: model:ir.actions.act_window,name:tender_cat.action_tender_cat_remove_labels_wizard
+#: model:ir.model,name:tender_cat.model_tender_cat_remove_labels_wizard
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_cat_remove_labels_wizard_form
+#, python-format
+msgid "Remove labels from texts"
+msgstr "Видалити позначки з тексту"
+
+#. module: tender_cat
+#: code:addons/tender_cat/models/tender_doc_copy.py:0
+#: code:addons/tender_cat/models/tender_doc_report.py:0
+#: code:addons/tender_cat/models/tender_proposal_template.py:0
+#: model:ir.model.fields.selection,name:tender_cat.selection__tender_cat_tender_document__doc_class__doc_report
+#: model:ir.model.fields.selection,name:tender_cat.selection__tender_cat_tender_proposal_template_line__doc_class__doc_report
+#, python-format
+msgid "Report"
+msgstr "Звіт"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_doc_report__report_class
+msgid "Report class"
+msgstr "Клас звіту"
+
+#. module: tender_cat
+#: model:ir.actions.act_window,name:tender_cat.tender_cat_tender_reports_action
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_reports
+msgid "Reports"
+msgstr "Звіти"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__req_count
+msgid "Req Count"
+msgstr ""
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__req_docs_score
+msgid "Req Docs Score"
+msgstr ""
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_tender
+msgid "Requirements"
+msgstr "Вимоги"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__res_field
+msgid "Resource Field"
+msgstr ""
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__res_id
+msgid "Resource ID"
+msgstr "ID  ресурсу"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__res_model
+msgid "Resource Model"
+msgstr "Модель ресурсу"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__res_name
+msgid "Resource Name"
+msgstr "Назва ресурсу"
+
+#. module: tender_cat
+#: model:ir.model.fields.selection,name:tender_cat.selection__tender_cat_tender_proposal_doc_line__display_type__line_section
+msgid "Section"
+msgstr "Розділ"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_doc_line__sequence
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_template_line__sequence
+msgid "Sequence"
+msgstr "Послідовність"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document__show_upload_file
+msgid "Show Upload File"
+msgstr ""
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model_activity__start_time
+msgid "Start"
+msgstr "Початок"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__store_fname
+msgid "Stored Filename"
+msgstr "Збережена назва файлу"
+
+#. module: tender_cat
+#: model:ir.model.fields,help:tender_cat.field_tender_cat_tender_proposal_doc_line__display_type
+msgid "Technical field for UX purpose."
+msgstr ""
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_tender_cat_tender
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_change_register__tender_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_create_proposal_wizard__tender_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_create_proposal_wizard__tender_number
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file_chunk__tender_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_remove_labels_wizard__tender_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__tender_id
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_tender
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_file_chunk
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_tender
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_change_registration_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_chunk_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_chunk_tree
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_cat_create_proposal_wizard_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_tree
+msgid "Tender"
+msgstr "Тендер"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__tender_id
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_tender
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_search
+msgid "Tender ID"
+msgstr "ID тендера"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_create_proposal_wizard__tender_desc
+msgid "Tender description"
+msgstr "Опис тендера"
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_tender_cat_tender_doc_external
+msgid "Tender doc external"
+msgstr "Зовнішній документ"
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_tender_cat_tender_doc_report
+msgid "Tender doc report"
+msgstr "Докумен-звіт"
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_tender_cat_tender_doc_template
+msgid "Tender doc template"
+msgstr "Документ-шаблон"
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_tender_cat_tender_document
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_form
+msgid "Tender document"
+msgstr "Документ"
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_tender_cat_tender_document_group
+msgid "Tender document group"
+msgstr "Група документів"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_tree
+msgid "Tender documents"
+msgstr "Тендерні документи"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_external_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_external_search
+msgid "Tender external document"
+msgstr "Зовнішній документ"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_external_tree
+msgid "Tender external documents"
+msgstr "Зовнішні документи"
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_tender_cat_file
+msgid "Tender file"
+msgstr "Файл тендеру"
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_tender_cat_tender_group
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_search
+msgid "Tender group"
+msgstr "Група тендерів"
+
+#. module: tender_cat
+#: model:ir.actions.act_window,name:tender_cat.act_tender_groups
+#: model:ir.actions.act_window,name:tender_cat.tender_cat_tender_groups_action
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_tender_groups
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_group_tree
+msgid "Tender groups"
+msgstr "Групи тендерів"
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_tender_cat_tender_proposal
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal_doc_line__proposal_id
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_tree
+msgid "Tender proposal"
+msgstr "Тендерна пропозиція"
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_tender_cat_tender_proposal_doc_line
+msgid "Tender proposal document line"
+msgstr "Рядок тендерної пропозиції"
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_tender_cat_tender_proposal_template
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_template_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_template_tree
+msgid "Tender proposal template"
+msgstr "Шаблон тендерної пропозиції"
+
+#. module: tender_cat
+#: model:ir.model,name:tender_cat.model_tender_cat_tender_proposal_template_line
+msgid "Tender proposal template's line"
+msgstr "Рядок шаблона тендерної пропозиції"
+
+#. module: tender_cat
+#: model:ir.actions.act_window,name:tender_cat.tender_cat_tender_proposal_action
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_tender_proposal
+msgid "Tender proposals"
+msgstr "Тендерні пропозиції"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_report_form
+msgid "Tender report"
+msgstr "Звіт"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_report_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_doc_report_tree
+msgid "Tender reports"
+msgstr "Звіти"
+
+#. module: tender_cat
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_root
+msgid "Tender.cat"
+msgstr "Тендер.кіт"
+
+#. module: tender_cat
+#: model:ir.actions.act_window,name:tender_cat.tender_cat_tender_action
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_tender_list
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_tender_sub_menu
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_tree
+msgid "Tenders"
+msgstr "Тендери"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file_chunk__chunk_text
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_file_chunk
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_chunk_search
+msgid "Text"
+msgstr "Текст"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.edit_file_chunk
+msgid "Text ID"
+msgstr "ID тексту"
+
+#. module: tender_cat
+#: model:ir.actions.act_window,name:tender_cat.act_tender_texts
+#: model:ir.ui.menu,name:tender_cat.tender_cat_menu_texts
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_chunk_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_chunk_tree
+msgid "Texts"
+msgstr "Тексти"
+
+#. module: tender_cat
+#: model:ir.model.fields,help:tender_cat.field_tender_cat_file__res_model
+msgid "The database object this attachment will be attached to."
+msgstr ""
+
+#. module: tender_cat
+#: model:ir.model.fields,help:tender_cat.field_tender_cat_file__res_id
+msgid "The record id this is attached to."
+msgstr ""
+
+#. module: tender_cat
+#: model:ir.model.fields,help:tender_cat.field_tender_cat_tender__tender_id
+msgid "The tender identifier to refer tender to in “paper” documentation."
+msgstr ""
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_cat_data_dump_wizard_form
+msgid "To folder"
+msgstr "В папку"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__value
+msgid "Total budget"
+msgstr "Загальний бюджет"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model_activity__activity_type
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__type
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_document__doc_class
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_form
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_tree
+msgid "Type"
+msgstr "Тип"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__message_unread
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__message_unread
+msgid "Unread Messages"
+msgstr "Непрочитані повідомлення"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender__message_unread_counter
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_tender_proposal__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Лічильник непрочитнах повідомлень"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_form
+msgid "Upload your PDF file to this document"
+msgstr "Завантажте ваш PDF файл до цього документу"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file__url
+msgid "Url"
+msgstr "Url"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model__use_data_dumping
+msgid "Use data dumping"
+msgstr "Використовує дампи даних"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_data_model_tree
+msgid "Use dump"
+msgstr "Використовує дамп"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model__label_ids
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_file_data_model_form
+msgid "Use labels"
+msgstr "Використовує позначки"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_change_register__user_id
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_data_model_activity__user_id
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_change_registration_search
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_cat_data_model_activity_search
+msgid "User"
+msgstr "Користувач"
+
+#. module: tender_cat
+#: model:ir.model.fields,field_description:tender_cat.field_tender_cat_file_chunk__user_edited_label
+msgid "User Edited Label"
+msgstr "Позначка редагована користувачем"
+
+#. module: tender_cat
+#: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_search
+msgid "Value"
+msgstr "Значення"
+
+#. module: tender_cat
+#: model:ir.model.fields,help:tender_cat.field_tender_cat_file__type
+msgid ""
+"You can either upload a file from your computer or copy/paste an internet "
+"link to your file."
+msgstr "Ви можете завантажити файл з вашого компьютера або скопіювати/вставити посилання"
+
+#. module: tender_cat
+#: code:addons/tender_cat/models/wizard_create_proposal.py:0
+#, python-format
+msgid "Пропозиція для {}"
+msgstr "Пропозиція для {}"
