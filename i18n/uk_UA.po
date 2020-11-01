@@ -78,23 +78,23 @@ msgstr "Тип активності"
 #. module: tender_cat
 #: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_form
 msgid "Add a document"
-msgstr "Добавити документ"
+msgstr "Додати документ"
 
 #. module: tender_cat
 #: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_form
 msgid "Add a note"
-msgstr "Добавити примітку"
+msgstr "Додати примітку"
 
 #. module: tender_cat
 #: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_proposal_form
 msgid "Add a section"
-msgstr "Добавити розділ"
+msgstr "Додати розділ"
 
 #. module: tender_cat
 #: code:addons/tender_cat/models/wizard_create_proposal.py:0
 #, python-format
 msgid "Add documents to this section"
-msgstr "Добавьте документи в цей розділ"
+msgstr "Додайте документи в цей розділ"
 
 #. module: tender_cat
 #: model:ir.model.fields.selection,name:tender_cat.selection__tender_cat_data_dump_wizard__labels_kind__all
@@ -361,7 +361,7 @@ msgstr "Активність моделей"
 #: model:ir.model.fields,field_description:tender_cat.field_res_config_settings__req_docs_data_model
 #: model:ir.model.fields,help:tender_cat.field_res_config_settings__req_docs_data_model
 msgid "Data model to find documents required for tender"
-msgstr "Модель даних для пошуку необхідних на тендер документів"
+msgstr "Модель даних для пошуку документів, які вимагає замовник тендеру"
 
 #. module: tender_cat
 #: model:ir.actions.act_window,name:tender_cat.tender_cat_data_models_action
@@ -493,7 +493,7 @@ msgstr "Клас документа"
 #: model:ir.model.fields.selection,name:tender_cat.selection__tender_cat_tender_document__doc_class__doc_copy
 #, python-format
 msgid "Document copy"
-msgstr "Копія доумента"
+msgstr "Копія документа"
 
 #. module: tender_cat
 #: model_terms:ir.ui.view,arch_db:tender_cat.view_tender_document_search
