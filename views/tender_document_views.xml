@@ -11,7 +11,8 @@
 					<field name="name" string="Name"/>
 					<field name="description" string="Description" optional="show"/>
 					<field name="content_type" string="Content type" optional="show"/>
-					<field name="document_type_id" string="Document type" optional="show"/>
+					<field name="document_group_id" string="Document group" optional="show"/>
+					<field name="doc_class" string="Type" optional="show"/>
 					<field name="company_id" string="Company" optional="show"/>
 				</tree>
 			</field>
@@ -28,13 +29,23 @@
 							<group>
 								<field name="name"/>
 								<field name="description" string="Description"/>
+								<field name="doc_class" string="Type"/>
 							</group>
 							<group>
 								<field name="doc_date" string="Date"/>
-								<field name="document_type_id" string="Document type"/>
 								<field name="company_id" string="Company"/>
+								<field name="document_group_id" string="Group"/>
 							</group>
-							<field name="file_content" string="" widget="pdf_viewer"/>
+
+							<div style=" display: block; width: 100%; " attrs="{'invisible': [('doc_class', '!=', 'doc_copy')]}">
+								<field name="show_upload_file" invisible="1"/>
+								<field name="file_content" string="" widget="pdf_viewer"/>
+							</div>
+							<div class="centered_message oe_read_only" attrs="{'invisible': [('show_upload_file', '=', False)]}">
+									<div class="centered_message oe_read_only" style="font-size: 1.5em;">
+										Upload your PDF file to this document
+									</div>
+								</div>
 						</group>
 					</sheet>
 				</form>
@@ -51,9 +62,11 @@
 						<field name="description" string="Description"/>
 
 						<group expand="0" string="Group By">
-							<filter string="Document type" name="document_type" context="{'group_by': 'document_type_id'}"/>
+							<filter string="Document group" name="document_group" context="{'group_by': 'document_group_id'}"/>
 							<filter string="Company" name="company" context="{'group_by': 'company_id'}"/>
+							<filter string="Document type" name="document_class" context="{'group_by': 'doc_class'}"/>
 							<filter string="Document date" name="doc_date" context="{'group_by': 'doc_date:month'}"/>
+
 						</group>
 
 					</search>

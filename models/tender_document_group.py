@@ -7,9 +7,9 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
-class TenderDocumentType(models.Model):
-    _name = 'tender_cat.tender.document.type'
-    _description = "Tender document type"
+class TenderDocumentGroup(models.Model):
+    _name = 'tender_cat.tender.document.group'
+    _description = "Tender document group"
 
     name = fields.Char(string='Name')
     description = fields.Text(string='Detailed description')

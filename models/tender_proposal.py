@@ -104,8 +104,8 @@ class TenderProposalDocLine(models.Model):
         vals = {}
 
         desc = ''
-        if self.document_id.document_type_id:
-            desc += '{}'.format(self.document_id.document_type_id.name)
+        if self.document_id.document_group_id:
+            desc += '{}'.format(self.document_id.document_group_id.name)
 
         if self.document_id.doc_date:
             if desc:

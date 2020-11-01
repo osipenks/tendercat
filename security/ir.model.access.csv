@@ -7,9 +7,12 @@ access_tender_cat_data_model,tender_cat.data.model,model_tender_cat_data_model,b
 access_tender_cat_change_register,tender_cat.change.register,model_tender_cat_change_register,base.group_user,1,1,1,1
 access_tender_cat_data_model_activity,tender_cat.data.model.activity,model_tender_cat_data_model_activity,base.group_user,1,1,1,1
 access_tender_cat_tender_group,tender_cat.tender.group,model_tender_cat_tender_group,base.group_user,1,1,1,1
-access_tender_cat_tender_document_type,tender_cat.tender.document.type,model_tender_cat_tender_document_type,base.group_user,1,1,1,1
+access_tender_cat_tender_document_group,tender_cat.tender.document.group,model_tender_cat_tender_document_group,base.group_user,1,1,1,1
 access_tender_cat_tender_document,tender_cat.tender.document,model_tender_cat_tender_document,base.group_user,1,1,1,1
 access_tender_cat_tender_proposal,tender_cat.tender.proposal,model_tender_cat_tender_proposal,base.group_user,1,1,1,1
 access_tender_cat_tender_proposal_template,tender_cat.tender.proposal.template,model_tender_cat_tender_proposal_template,base.group_user,1,1,1,1
 access_tender_cat_tender_proposal_template_line,tender_cat.tender.proposal.template.line,model_tender_cat_tender_proposal_template_line,base.group_user,1,1,1,1
 access_tender_cat_tender_proposal_doc_line,tender_cat.tender.proposal.doc.line,model_tender_cat_tender_proposal_doc_line,base.group_user,1,1,1,1
+access_tender_cat_tender_doc_report,tender_cat.tender.doc.report,model_tender_cat_tender_doc_report,base.group_user,1,1,1,1
+access_tender_cat_tender_doc_external,tender_cat.tender.doc.external,model_tender_cat_tender_doc_external,base.group_user,1,1,1,1
+access_tender_cat_tender_doc_template,tender_cat.tender.doc.template,model_tender_cat_tender_doc_template,base.group_user,1,1,1,1

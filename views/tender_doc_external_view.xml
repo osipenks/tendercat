@@ -1,0 +1,54 @@
+<odoo>
+	<data>
+
+		<!-- Tender doc external tree view -->
+		<record id="view_tender_doc_external_tree" model="ir.ui.view">
+			<field name="name">tender_cat.tender.doc.external.tree</field>
+			<field name="model">tender_cat.tender.doc.external</field>
+			<field name="arch" type="xml">
+				<tree string="Tender external documents">
+					<field name="name" string="Name"/>
+					<field name="description" string="Description" optional="show"/>
+					<field name="document_group_id" string="Document group" optional="show"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- Tender doc external form view -->
+		<record id="view_tender_doc_external_form" model="ir.ui.view">
+			<field name="name">tender_cat.tender.doc.external.form</field>
+			<field name="model">tender_cat.tender.doc.external</field>
+			<field name="arch" type="xml">
+				<form string="Tender external document">
+					<sheet>
+						<group>
+							<field name="name"/>
+							<field name="description" string="Description"/>
+							<field name="document_group_id" string="Group"/>
+						</group>
+						<div class="centered_message">
+							Here we can order a document from an external source, for example bank or local authority
+						</div>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<!-- Tender doc external search view -->
+		  <record id="view_tender_doc_external_search" model="ir.ui.view">
+				<field name="name">tender_cat.tender.doc.external.search</field>
+				<field name="model">tender_cat.tender.doc.external</field>
+				<field name="arch" type="xml">
+					<search string="Tender external document">
+						<field name="name" string="Name"/>
+						<field name="description" string="Description"/>
+
+						<group expand="0" string="Group By">
+							<filter string="Document group" name="document_group" context="{'group_by': 'document_group_id'}"/>
+						</group>
+					</search>
+				</field>
+		  </record>
+
+	</data>
+</odoo>

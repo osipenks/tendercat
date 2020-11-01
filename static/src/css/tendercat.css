@@ -1,3 +1,8 @@
+
+.o_form_view .o_form_sheet_bg > .o_form_sheet {
+    max-width: 1280px;
+}
+
 .o_attachment {
     width: 100%;
 
@@ -68,4 +73,21 @@
 
 .o_field_widget .o_pdfview_iframe {
     height: 640px;
+}
+
+.centered_message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -27%;
+    margin-top: 2em;
+}
+
+.o_form_view .o_notebook {
+    margin-top: 0px;
+}
+
+.o_form_view .oe_chatter {
+    max-width: 1280px;
+    padding: 0px 0px 48px;
 }

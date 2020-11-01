@@ -74,10 +74,10 @@ class CreateProposalWizard(models.TransientModel):
             line_num = int(line.line_number)
             if line.label_ids:
                 for label in line.label_ids:
-                    add_doc_line(templ_label_docs, label.name, line_num, line.document_id.id)
+                    add_doc_line(templ_label_docs, label.name, line_num, line.doc_copy_id.id)
             else:
                 empty = ''
-                add_doc_line(templ_label_docs, empty, line_num, line.document_id.id)
+                add_doc_line(templ_label_docs, empty, line_num, line.doc_copy_id.id)
 
         # Labels from tender texts
         tender_labels = self.tender_id.get_text_labels()

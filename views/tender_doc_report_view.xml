@@ -1,0 +1,54 @@
+<odoo>
+	<data>
+
+		<!-- Tender doc report tree view -->
+		<record id="view_tender_doc_report_tree" model="ir.ui.view">
+			<field name="name">tender_cat.tender.doc.report.tree</field>
+			<field name="model">tender_cat.tender.doc.report</field>
+			<field name="arch" type="xml">
+				<tree string="Tender reports">
+					<field name="name" string="Name"/>
+					<field name="description" string="Description" optional="show"/>
+					<field name="document_group_id" string="Document group" optional="show"/>
+					<field name="report_class" string="Class" optional="show"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- Tender doc report form view -->
+		<record id="view_tender_doc_report_form" model="ir.ui.view">
+			<field name="name">tender_cat.tender.doc.report.form</field>
+			<field name="model">tender_cat.tender.doc.report</field>
+			<field name="arch" type="xml">
+				<form string="Tender report">
+					<sheet>
+						<group>
+							<field name="name"/>
+							<field name="description" string="Description"/>
+							<field name="document_group_id" string="Group"/>
+							<field name="report_class" string="Class"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<!-- Tender doc report search view -->
+		  <record id="view_tender_doc_report_search" model="ir.ui.view">
+				<field name="name">tender_cat.tender.doc.report.search</field>
+				<field name="model">tender_cat.tender.doc.report</field>
+				<field name="arch" type="xml">
+					<search string="Tender reports">
+						<field name="name" string="Name"/>
+						<field name="description" string="Description"/>
+
+						<group expand="0" string="Group By">
+							<filter string="Document group" name="document_group" context="{'group_by': 'document_group_id'}"/>
+							<filter string="Class" name="document_class" context="{'group_by': 'report_class'}"/>
+						</group>
+					</search>
+				</field>
+		  </record>
+
+	</data>
+</odoo>

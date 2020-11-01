@@ -26,16 +26,35 @@
 		</record>
 
 		<record model="ir.actions.act_window" id="tender_cat_tender_document_types_action">
-			<field name="name">Document types</field>
-			<field name="res_model">tender_cat.tender.document.type</field>
+			<field name="name">Document groups</field>
+			<field name="res_model">tender_cat.tender.document.group</field>
 			<field name="view_mode">tree,form</field>
 		</record>
 
 		<record model="ir.actions.act_window" id="tender_cat_tender_document_action">
-			<field name="name">Tender documents</field>
+			<field name="name">Copies of documents</field>
 			<field name="res_model">tender_cat.tender.document</field>
 			<field name="view_mode">tree,form</field>
 		</record>
+
+		<record model="ir.actions.act_window" id="tender_cat_tender_reports_action">
+			<field name="name">Reports</field>
+			<field name="res_model">tender_cat.tender.doc.report</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="tender_cat_external_docs_action">
+			<field name="name">External documents</field>
+			<field name="res_model">tender_cat.tender.doc.external</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="tender_cat_template_docs_action">
+			<field name="name">Document templates</field>
+			<field name="res_model">tender_cat.tender.doc.template</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
 
 		<record model="ir.actions.act_window" id="tender_cat_file_texts_action">
 			<field name="name">File texts</field>
@@ -88,7 +107,7 @@
 
 		<!-- Top categories -->
 		<menuitem name="Tender" id="tender_cat_menu_tender" parent="tender_cat_menu_root" sequence="10"/>
-		<menuitem name="Documents" id="tender_cat_menu_documents" parent="tender_cat_menu_root" sequence="20"/>
+		<menuitem name="Proposal" id="tender_cat_menu_documents" parent="tender_cat_menu_root" sequence="20"/>
 		<menuitem name="Configuration" id="tender_cat_menu_config" parent="tender_cat_menu_root" sequence="30"/>
 
 		<!-- Menu Tenders -->
@@ -110,8 +129,23 @@
 		<menuitem name="Proposal templates" id="tender_cat_menu_proposal_template" parent="tender_cat_menu_documents"
 				  action="tender_cat_proposal_template_action" sequence="50"/>
 
-		<menuitem name="Documents" id="tender_cat_menu_tender_document" parent="tender_cat_menu_documents"
-				  action="tender_cat_tender_document_action" sequence="100"/>
+		<!-- Submenu Documents -->
+		<menuitem id="tender_cat_menu_documents_sub_menu" name="Documents" parent="tender_cat_menu_documents" sequence="100"/>
+
+		<menuitem name="Copies of documents" id="tender_cat_menu_tender_document" parent="tender_cat_menu_documents_sub_menu"
+				  action="tender_cat_tender_document_action" sequence="200"/>
+
+		<menuitem name="Reports" id="tender_cat_menu_reports" parent="tender_cat_menu_documents_sub_menu"
+				  action="tender_cat_tender_reports_action" sequence="300"/>
+
+		<menuitem name="Document templates" id="tender_cat_menu_template_docs" parent="tender_cat_menu_documents_sub_menu"
+				  action="tender_cat_template_docs_action" sequence="400"/>
+
+		<menuitem name="External documents" id="tender_cat_menu_external_docs" parent="tender_cat_menu_documents_sub_menu"
+				  action="tender_cat_external_docs_action" sequence="500"/>
+
+
+
 
 
 
@@ -124,7 +158,7 @@
 		<menuitem id="tender_cat_menu_tender_sub_menu" name="Tenders" parent="tender_cat_menu_config" sequence="200"/>
 
 
-		<menuitem name="Document types" id="tender_cat_menu_tender_document_types" parent="tender_cat_menu_tender_sub_menu"
+		<menuitem name="Document groups" id="tender_cat_menu_tender_document_types" parent="tender_cat_menu_tender_sub_menu"
 				  action="tender_cat_tender_document_types_action" sequence="300"/>
 
 		<menuitem name="Companies" id="tender_cat_menu_companies" parent="tender_cat_menu_tender_sub_menu"

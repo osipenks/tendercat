@@ -1,0 +1,53 @@
+<odoo>
+	<data>
+
+		<!-- Tender doc template tree view -->
+		<record id="view_tender_doc_template_tree" model="ir.ui.view">
+			<field name="name">tender_cat.tender.doc.template.tree</field>
+			<field name="model">tender_cat.tender.doc.template</field>
+			<field name="arch" type="xml">
+				<tree string="Document templates">
+					<field name="name" string="Name"/>
+					<field name="description" string="Description" optional="show"/>
+					<field name="document_group_id" string="Document group" optional="show"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- Tender doc template form view -->
+		<record id="view_tender_doc_template_form" model="ir.ui.view">
+			<field name="name">tender_cat.tender.doc.template.form</field>
+			<field name="model">tender_cat.tender.doc.template</field>
+			<field name="arch" type="xml">
+				<form string="Document template">
+					<sheet>
+						<group>
+							<field name="name"/>
+							<field name="description" string="Description"/>
+							<field name="document_group_id" string="Group"/>
+						</group>
+						<div class="centered_message">
+							Here we can edit custom document templates
+						</div>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<!-- Tender doc template search view -->
+		  <record id="view_tender_doc_template_search" model="ir.ui.view">
+				<field name="name">tender_cat.tender.doc.template.search</field>
+				<field name="model">tender_cat.tender.doc.template</field>
+				<field name="arch" type="xml">
+					<search string="Document template">
+						<field name="name" string="Name"/>
+						<field name="description" string="Description"/>
+						<group expand="0" string="Group By">
+							<filter string="Document group" name="document_group" context="{'group_by': 'document_group_id'}"/>
+						</group>
+					</search>
+				</field>
+		  </record>
+
+	</data>
+</odoo>
