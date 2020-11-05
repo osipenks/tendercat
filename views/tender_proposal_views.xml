@@ -7,8 +7,8 @@
 			<field name="arch" type="xml">
 				<tree string="Tender proposal" class="tender_proposal_tree">
 					<field name="doc_date" string="Date" optional="show"/>
-					<field name="name" string="Name" />
-					<field name="description" string="Description" />
+					<field name="name" string="Name"/>
+					<field name="description" string="Description"/>
 					<field name="tender_id" string="Tender" optional="show"/>
 					<field name="company_id" string="Company" optional="show"/>
 					<field name="user_id" string="Manager" optional="show"/>
@@ -21,9 +21,11 @@
 			<field name="model">tender_cat.tender.proposal</field>
 			<field name="arch" type="xml">
 				<form string="Tender proposal">
+					<!--
 					<header>
                         <button name="action_download_zip" string="Download .zip" type="object" class="oe_read_only"/>
                     </header>
+                    -->
 					<sheet>
 						<div class="oe_title">
 							<h3>
@@ -43,8 +45,9 @@
 						</group>
 						<notebook>
 							<page string="Documents">
-								<field name="doc_line_ids" widget="section_and_note_one2many" context="{'default_proposal_id': id}" limit="255">
-									<tree string="Documents" editable="bottom" class="tender_proposal_lines_tree">
+								<field name="doc_line_ids" widget="proposal_docs_one2many"
+									   context="{'default_proposal_id': id}">
+									<tree string="Documents" class="tender_proposal_lines_tree" limit="255">
 										<control>
 											<create name="add_doc_control" string="Add a document"/>
 											<create name="add_section_control" string="Add a section"
@@ -52,21 +55,26 @@
 											<create name="add_note_control" string="Add a note"
 													context="{'default_display_type': 'line_note'}"/>
 										</control>
-										<field name="display_type" invisible="1"/>
 										<field name="proposal_id" invisible="1"/>
+										<field name="doc_class" invisible="1"/>
+										<field name="display_type" invisible="1"/>
 										<field name="sequence" widget="handle"/>
 										<field name="line_number" string="Nr" readonly="1"/>
-										<field name="document_id" options="{'no_open': True}" force_save="1"/>
-										<field name="name" widget="section_and_note_text" attrs="{'required': [('display_type', '!=', False)],}"/>
+										<field name="doc_repr" options="{'no_open': True}"/>
+										<field name="name" widget="proposal_docs_text"
+											   attrs="{'required': [('display_type', '!=', False)],}"/>
+										<field name="file_content" string="Size"/>
 									</tree>
 								</field>
 							</page>
 						</notebook>
 					</sheet>
 					<div class="oe_chatter">
-                    	<field name="message_follower_ids" widget="mail_followers" help="Follow this tender to automatically track the events associated to it" groups="base.group_user"/>
-                    	<field name="message_ids" widget="mail_thread"/>
-                	</div>
+						<field name="message_follower_ids" widget="mail_followers"
+							   help="Follow this tender to automatically track the events associated to it"
+							   groups="base.group_user"/>
+						<field name="message_ids" widget="mail_thread"/>
+					</div>
 				</form>
 			</field>
 		</record>
@@ -89,5 +97,64 @@
 				</search>
 			</field>
 		</record>
+
+		<!-- Tender proposal new line form view -->
+		<record id="view_tender_proposal_doc_line_form" model="ir.ui.view">
+			<field name="name">tender_cat.tender.proposal.doc.line.form</field>
+			<field name="model">tender_cat.tender.proposal.doc.line</field>
+			<field name="arch" type="xml">
+				<form string="Tender proposal line">
+					<sheet>
+						<field name="display_type" invisible="1"/>
+						<group attrs="{'invisible': ['|', ('display_type', '==', 'line_section'), ('display_type', '==', 'line_note')]}">
+							<field name="doc_class" widget="radio" required="True"
+								   style="margin: 0 1em 1em 1em; font-size: 1.1em;"/>
+							<field name="doc_copy_id" style="margin-left: 1em; padding-right: 28px;"
+								   attrs="{'invisible': [('doc_class', '!=', 'doc_copy')]}"/>
+							<field name="doc_report_id" style="margin-left: 1em; padding-right: 28px;"
+								   attrs="{'invisible': [('doc_class', '!=', 'doc_report')]}"/>
+							<field name="doc_template_id" style="margin-left: 1em; padding-right: 28px;"
+								   attrs="{'invisible': [('doc_class', '!=', 'doc_template')]}"/>
+							<field name="doc_external_id" style="margin-left: 1em; padding-right: 28px;"
+								   attrs="{'invisible': [('doc_class', '!=', 'doc_external')]}"/>
+							<field name="name" string="Description" style="margin-left: 1em;"/>
+						</group>
+						<group attrs="{'invisible': [('display_type', '!=', 'line_section')]}">
+							<field name="name" string="Section name"/>
+						</group>
+						<group attrs="{'invisible': [('display_type', '!=', 'line_note')]}">
+							<field name="name" string="Note text"/>
+						</group>
+						<div style=" display: block; width: 100%;">
+							<field name="file_content" string="" widget="pdf_viewer"/>
+						</div>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<!-- Tender proposal line doc copy form view -->
+		<record id="proposal_doc_line_doc_copy_form" model="ir.ui.view">
+			<field name="name">tender_cat.tender.proposal.doc.line.form</field>
+			<field name="model">tender_cat.tender.proposal.doc.line</field>
+			<field name="arch" type="xml">
+				<form string="Tender proposal document">
+					<sheet>
+						<field name="display_type" invisible="1"/>
+						<group>
+							<group>
+								<field name="doc_copy_id" string="Document copy" style="margin-left: 1em; padding-right: 28px;"/>
+								<field name="name" string="Description" style="margin-left: 1em;"/>
+							</group>
+							<div style=" display: block; width: 100%;">
+								<field name="file_content" string="" widget="pdf_viewer"/>
+							</div>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
 	</data>
 </odoo>

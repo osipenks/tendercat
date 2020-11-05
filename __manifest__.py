@@ -3,7 +3,7 @@
     'name': "Tender.cat",
 
     'summary': """App for AI powered tender evaluation and management, ver. 0.1""",
-    'version': "1.0.1",
+    'version': "1.0.2",
 
     'author': 'E+',
     'website': 'https://www.epls.dev',

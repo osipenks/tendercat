@@ -40,7 +40,6 @@ class TenderDocument(models.Model):
         self.show_upload_file = self.file_content is False and self.doc_class == 'doc_copy'
 
     def write(self, vals):
-
         # Clear file content, if it isn't doc_copy
         doc_class = vals.get('doc_class', 0)
         if doc_class and not doc_class == 'doc_copy':
@@ -51,5 +50,5 @@ class TenderDocument(models.Model):
 
     def get_desc(self):
         desc = _('Document copy')
-        desc += (_(', дата') + str(self.doc_date)) if self.doc_date else ''
+        desc += (_(', дата ') + str(self.doc_date)) if self.doc_date else ''
         return desc

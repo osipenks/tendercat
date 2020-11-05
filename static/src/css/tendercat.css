@@ -15,6 +15,12 @@
 }
 }
 
+@media (min-width: 768px) {
+    .o_control_panel .breadcrumb {
+        width: 100%;
+    }
+}
+
 .o_kanban_view .o_kanban_record.o_kanban_attachment {
     padding: 0;
     width: 31%;
