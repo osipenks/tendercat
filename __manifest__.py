@@ -38,6 +38,7 @@
         'wizard/wizard_data_dump_views.xml',
         'wizard/wizard_remove_labels_views.xml',
         'wizard/wizard_create_proposal_view.xml',
+        'wizard/wizard_download_proposal_view.xml',
         'views/views.xml',
     ],
 

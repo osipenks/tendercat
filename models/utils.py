@@ -9,6 +9,7 @@ from odoo.sql_db import db_connect
 import logging
 import pandas as pd
 import os
+import zipfile
 
 _logger = logging.getLogger(__name__)
 
@@ -144,3 +145,14 @@ def _run_cron_thread(db_name, job_id):
                 del threading.current_thread().dbname
 
         thread.start_time = None
+
+
+def zip_folder(src, dst):
+    zf = zipfile.ZipFile(dst, "w", zipfile.ZIP_DEFLATED)
+    abs_src = os.path.abspath(src)
+    for dirname, subdirs, files in os.walk(src):
+        for filename in files:
+            abs_name = os.path.abspath(os.path.join(dirname, filename))
+            arc_name = abs_name[len(abs_src) + 1:]
+            zf.write(abs_name, arc_name)
+    zf.close()

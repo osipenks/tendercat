@@ -20,3 +20,4 @@ from . import tender_doc_template
 from . import tender_proposal
 from . import tender_proposal_template
 from . import wizard_create_proposal
+from . import wizard_download_proposal

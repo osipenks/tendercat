@@ -62,8 +62,8 @@
 					<field name="tender_file_id" string="File name"/>
 					<field name="tender_id" string="Tender"/>
 
-					<filter string="Documents" name="doc_list" domain="[('user_label_ids', '!=', False)]"/>
-					<filter string="Documents context" name="doc_list_with_context"
+					<filter string="Requirements" name="doc_list" domain="[('user_label_ids', '!=', False)]"/>
+					<filter string="Requirements context" name="doc_list_with_context"
 							domain="[('is_doc_context', '=', True)]"/>
 
 					<group expand="0" string="Group By">

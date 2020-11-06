@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<odoo>
+	<!-- Download proposal's files  -->
+	<record id="view_tendercat_download_proposal_wizard_form" model="ir.ui.view">
+		<field name="name">tender_cat.download.proposal.wizard.form</field>
+		<field name="model">tender_cat.download.proposal.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Download proposal files">
+				<field invisible="1" name="state"/>
+				<field name="archive_name" invisible="1"/>
+				<group>
+					<field name="proposal_id" string="Proposal" readonly="1"/>
+					<field name="proposal_desc" string="" readonly="1"/>
+				</group>
+				<group states="choose">
+					<field name="archive_name" string="Archive name" readonly="0"/>
+				</group>
+				<group states="get">
+					<field name="moto" readonly="1" string=""/>
+					<field name="data" readonly="1" filename="archive_name" string="Archive"/>
+				</group>
+				<footer states="choose">
+					<button name="create_archive" type="object" string="Create archive" class="btn-primary"/>
+					<button string="Cancel" class="btn-secondary" special="cancel"/>
+				</footer>
+				<footer states="get">
+					<button string="Close" type="object" class="btn-primary" special="cancel" />
+				</footer>
+
+			</form>
+		</field>
+	</record>
+
+	<act_window
+			id="action_tender_cat_download_proposal_wizard"
+			name="Download proposal files"
+			res_model="tender_cat.download.proposal.wizard"
+			binding_model="tender_cat.tender.proposal"
+			binding_views="form"
+			view_mode="form"
+			target="new"
+	/>
+
+</odoo>

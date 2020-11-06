@@ -30,26 +30,10 @@ class TenderProposal(models.Model):
         doc_lines = []
         val = (0, 0, {
             'display_type': 'line_section',
-            'name': 'SECTION NAME!!',
+            'name': _('Section name'),
         })
         doc_lines.append(val)
         self.update({'doc_line_ids': doc_lines})
-
-    def action_download_zip(self):
-        # action = self.env.ref('tender_cat.tender_cat_data_models_action')
-        # msg = _(
-        #     "Fine, dude")
-        # raise exceptions.RedirectWarning(msg, action.id, _("Go to the configuration panel"))
-        # self.env.user.notify_default(message=_("Looks great, dude!"),
-        #                              title='Download .zip',
-        #                              sticky=False)
-
-        raise exceptions.UserError("Everything Ok, downloaded!")
-
-        # return {'warning': {
-        #     'title': _("Download .zip"),
-        #     'message': _("Everything Ok, downloaded!")
-        # }}
 
 
 class TenderProposalDocLine(models.Model):
@@ -63,9 +47,6 @@ class TenderProposalDocLine(models.Model):
 
     proposal_id = fields.Many2one('tender_cat.tender.proposal', 'Tender proposal', index=True, ondelete='cascade',
                                   required=True)
-
-    document_id = fields.Many2one('tender_cat.tender.document', string='Document',
-                                  change_default=True, ondelete='restrict')
 
     doc_class = fields.Selection([
         ('doc_copy', _('Copy of document')),
@@ -91,13 +72,8 @@ class TenderProposalDocLine(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         for values in vals_list:
-            if values.get('display_type', self.default_get(['display_type'])['display_type']):
-                values.update(document_id=False)
-
             values.update(self._prepare_add_missing_fields(values))
-
         lines = super().create(vals_list)
-
         return lines
 
     @api.model
@@ -106,33 +82,12 @@ class TenderProposalDocLine(models.Model):
         """ Deduce missing required fields from the onchange """
         res = {}
         onchange_fields = ['name', ]
-        if values.get('proposal_id') and values.get('document_id') and any(f not in values for f in onchange_fields):
+        if values.get('proposal_id') and any(f not in values for f in onchange_fields):
             line = self.new(values)
-            line.document_id_change()
             for field in onchange_fields:
                 if field not in values:
                     res[field] = line._fields[field].convert_to_write(line[field], line)
         return res
-
-    @api.onchange('document_id')
-    def document_id_change(self):
-        if not self.document_id:
-            return
-        vals = {}
-
-        desc = ''
-        if self.document_id.document_group_id:
-            desc += '{}'.format(self.document_id.document_group_id.name)
-
-        if self.document_id.doc_date:
-            if desc:
-                desc += ', '
-            desc += 'дата {}'.format(self.document_id.doc_date)
-
-        vals.update(name=desc)
-        self.update(vals)
-        result = {}
-        return result
 
     @api.depends('sequence', 'proposal_id')
     def _compute_get_number(self):
@@ -161,7 +116,6 @@ class TenderProposalDocLine(models.Model):
 
     def get_formview_action(self, access_uid=None):
         res = super(TenderProposalDocLine, self).get_formview_action(access_uid=access_uid)
-
         return res
 
     def unlink(self):
@@ -180,8 +134,8 @@ class TenderProposalDocLine(models.Model):
 
     def _get_active_doc(self, doc_ids=None):
         """
-        Return document object for selected doc_class.
-        Param doc_ids may contain 'doc_copy_id', 'doc_report_id' etc from write() method
+        Return correct class document-object for selected doc_class.
+        Argument doc_ids:dict may contain 'doc_copy_id', 'doc_report_id' etc from write() method
         """
         doc_dct = {
             'doc_class': self.doc_class if doc_ids is None else

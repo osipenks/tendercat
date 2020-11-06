@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
 import logging
-import base64
-from PyPDF2 import PdfFileWriter, PdfFileReader
-import io
 
 _logger = logging.getLogger(__name__)
 
@@ -75,7 +72,6 @@ class CreateProposalWizard(models.TransientModel):
                     vals.update({'file_content': doc.file_content})
 
         new_line = self.env['tender_cat.tender.proposal.doc.line'].create(vals)
-        new_line.document_id_change()
         new_line.set_desc()
 
     def create_proposal(self):
