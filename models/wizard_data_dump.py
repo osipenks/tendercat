@@ -107,7 +107,7 @@ class DataDumpWizard(models.TransientModel):
         clean_folder(self.dump_folder)
 
         return {
-            'name': _('Download proposal files'),
+            'name': _('Make data dump'),
             'type': 'ir.actions.act_window',
             'res_model': 'tender_cat.data.dump.wizard',
             'view_mode': 'form',
