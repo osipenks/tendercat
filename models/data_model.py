@@ -2,7 +2,6 @@
 
 from odoo import models, fields, _
 from . import da_reqdoc_deep_sim_pipeline
-#from . import utils
 from .data_model_activity import RunActivity, RunAsyncActivity
 import logging
 import csv

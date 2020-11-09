@@ -6,19 +6,30 @@
 		<field name="model">tender_cat.data.dump.wizard</field>
 		<field name="arch" type="xml">
 			<form string="Make dump for data model">
+				<field name="state" invisible="1"/>
+				<field name="archive_name" invisible="1"/>
 				<group>
-					<field name="data_model_id"/>
-
+					<field name="data_model_id" readonly="1"/>
 				</group>
-				<group>
+				<group states="choose">
 					<field name="labels_kind" widget="radio" />
 				</group>
-				<group>
-					<field name="dump_folder" string="To folder"/>
+				<group states="choose">
+					<field name="archive_name" string="Archive name" readonly="0"/>
 				</group>
-				<footer>
-					<button name="make_data_dump" type="object" string="Make dump" class="btn-primary"/>
+				<group states="get">
+					<p></p>
+				</group>
+				<group states="get">
+					<field name="moto" readonly="1" string=""/>
+					<field name="data" readonly="1" filename="archive_name" string="Archive"/>
+				</group>
+				<footer states="choose">
+					<button name="create_archive" type="object" string="Create dump .zip" class="btn-primary"/>
 					<button string="Cancel" class="btn-secondary" special="cancel"/>
+				</footer>
+				<footer states="get">
+					<button string="Close" type="object" class="btn-primary" special="cancel" />
 				</footer>
 			</form>
 		</field>

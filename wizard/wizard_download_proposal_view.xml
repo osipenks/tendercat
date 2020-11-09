@@ -26,7 +26,6 @@
 				<footer states="get">
 					<button string="Close" type="object" class="btn-primary" special="cancel" />
 				</footer>
-
 			</form>
 		</field>
 	</record>

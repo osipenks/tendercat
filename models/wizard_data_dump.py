@@ -2,6 +2,10 @@
 from odoo import models, fields, api, _
 from . import data_dump
 import logging
+import tempfile
+from .utils import zip_folder, clean_folder
+import base64
+
 
 _logger = logging.getLogger(__name__)
 
@@ -23,6 +27,13 @@ class DataDumpWizard(models.TransientModel):
 
     dump_folder = fields.Char(string="Dump to folder")
 
+    archive_name = fields.Char(string='Archive name')
+
+    data = fields.Binary('File', readonly=True, attachment=False)
+    state = fields.Selection([('choose', 'choose'), ('get', 'get')],  # choose arch name or get the file
+                             default='choose')
+    moto = fields.Text(default=_('Great! Archive is ready, you can download it now'))
+
     @api.model
     def default_get(self, default_fields):
         result = super(DataDumpWizard, self).default_get(default_fields)
@@ -42,6 +53,8 @@ class DataDumpWizard(models.TransientModel):
         if data_model_id:
             dump = data_dump.DataDump(self.env, data_model_id)
             result['dump_folder'] = dump.folder(data_model_id)
+            data_model = self.env['tender_cat.data.model'].browse(data_model_id)
+            result['archive_name'] = data_model.name
 
         return result
 
@@ -67,6 +80,40 @@ class DataDumpWizard(models.TransientModel):
             'context': self.env.context,
             'target': 'new',
             'type': 'ir.actions.act_window',
+        }
+
+    def create_archive(self):
+        this = self[0]
+        pdf_ext = 'pdf'
+        zip_ext = 'zip'
+        arch_name = "%s.%s" % (this.archive_name, zip_ext)
+
+        self.make_data_dump()
+
+        # Make archive from files in folder
+        tmp_file = tempfile.NamedTemporaryFile()
+        zip_folder(self.dump_folder, tmp_file.name)
+
+        vals = {'state': 'get', 'archive_name': arch_name}
+
+        # Save archive to binary field
+        with open(tmp_file.name, 'rb') as arch_file:
+            out = base64.b64encode(arch_file.read())
+            if out:
+                vals.update({'data': out})
+
+        tmp_file.close()
+        this.write(vals)
+        clean_folder(self.dump_folder)
+
+        return {
+            'name': _('Download proposal files'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'tender_cat.data.dump.wizard',
+            'view_mode': 'form',
+            'res_id': this.id,
+            'views': [(False, 'form')],
+            'target': 'new',
         }
 
     def make_data_dump(self):

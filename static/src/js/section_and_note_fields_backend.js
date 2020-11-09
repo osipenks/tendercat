@@ -1,7 +1,7 @@
 
 odoo.define('tendercat.section_and_note_backend', function (require) {
 // The goal of this file is to contain JS hacks related to allowing
-// section, note and doc forms on tender proposals
+// section, note and opening form views via get_formview_action method of tender proposal doc lines
 
 "use strict";
 var FieldChar = require('web.basic_fields').FieldChar;
@@ -91,80 +91,6 @@ var ProposalDocsFieldOne2Many = FieldOne2Many.extend({
         return this._super.apply(this, arguments);
     },
 
-    /**
-     * Opens a FormViewDialog to allow creating a new record for a one2many.
-     *
-     * @override
-     * @private
-     * @param {OdooEvent|MouseEvent} ev this event comes either from the 'Add
-     *   record' link in the list editable renderer, or from the 'Create' button
-     *   in the kanban view
-     * @param {Array} ev.data.context additional context for the added records,
-     *   if several contexts are provided, multiple records will be added
-     *   (form dialog will only use the context at index 0 if provided)
-     * @param {boolean} ev.data.forceEditable this is used to bypass the dialog opening
-     *   in case you want to add record(s) to a list
-     * @param {function} ev.data.onSuccess called when the records are correctly created
-     *   (not supported by form dialog)
-     * @param {boolean} ev.data.allowWarning defines if the records can be added
-     *   to the list even if warnings are triggered (e.g: stock warning for product availability)
-     */
-    // _onAddRecord: function (ev) {
-    //     var self = this;
-    //     var data = ev.data || {};
-    //     var isSection = this.record.data.display_type === 'line_section';
-    //     var isNote = this.record.data.display_type === 'line_note';
-    //
-    //     // we don't want interference with the components upstream.
-    //     ev.stopPropagation();
-    //
-    //     if (this.editable || data.forceEditable) {
-    //         if (!this.activeActions.create) {
-    //             if (data.onFail) {
-    //                 data.onFail();
-    //             }
-    //         } else if (!this.creatingRecord) {
-    //             this.creatingRecord = true;
-    //             this.trigger_up('edited_list', { id: this.value.id });
-    //             this._setValue({
-    //                 operation: 'CREATE',
-    //                 position: this.editable || data.forceEditable,
-    //                 context: data.context,
-    //             }, {
-    //                 allowWarning: data.allowWarning
-    //             }).then(function () {
-    //                 self.creatingRecord = false;
-    //             }).then(function (){
-    //                 if (data.onSuccess){
-    //                     data.onSuccess();
-    //                 }
-    //             }).guardedCatch(function() {
-    //                 self.creatingRecord = false;
-    //             })
-    //             ;
-    //         }
-    //     } else {
-    //         // this._openFormDialog({
-    //         //     context: data.context && data.context[0],
-    //         //     on_saved: function (record) {
-    //         //         self._setValue({ operation: 'ADD', id: record.id });
-    //         //     },
-    //         // });
-    //
-    //         // var context = data.context;
-    //         // context.update({ 'display_type': this.record.data.display_type});
-    //
-    //         return this._rpc({
-    //             model: 'tender_cat.tender.proposal.doc.line',
-    //             method: 'get_formview_action',
-    //             args: [[]],
-    //             context: data.context && data.context[0],
-    //         }).then(function(action) {
-    //             return self.do_action(action);
-    //         })
-    //     }
-    // },
-
     _onOpenRecord: function(ev) {
             var self = this;
             ev.stopPropagation();
@@ -192,9 +118,6 @@ var ProposalDocsFieldText = function (parent, name, record, options) {
     var Constructor = isSection ? FieldChar : ListFieldText;
     return new Constructor(parent, name, record, options);
 };
-
-// fieldRegistry.add('section_and_note_one2many', SectionAndNoteFieldOne2Many);
-// fieldRegistry.add('section_and_note_text', SectionAndNoteFieldText);
 
 fieldRegistry.add('proposal_docs_one2many', ProposalDocsFieldOne2Many);
 fieldRegistry.add('proposal_docs_text', ProposalDocsFieldText);
