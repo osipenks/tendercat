@@ -323,6 +323,10 @@ class Tender(models.Model):
 
     def make_assessment(self):
 
+        # Check, if user labeled any tender text already, then additionally confirm assessment
+        # and give an explanation
+
+
         # todo: check if we need 1 and 2, if files not changed since last conversion
         # 1. Delete old text chunks
         query = 'DELETE FROM tender_cat_file_chunk WHERE tender_id = {}'.format(self.id)
